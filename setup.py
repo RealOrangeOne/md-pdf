@@ -13,6 +13,6 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        mdp=src.cli:cli
+        mdp=md_pdf.cli:cli
     """
 )
