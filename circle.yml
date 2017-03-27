@@ -10,4 +10,4 @@ dependencies:
 
 test:
   override:
-    - flake8 md_pdf/ --ignroe=E128,E501
+    - flake8 md_pdf/ --ignore=E128,E501
