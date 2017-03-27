@@ -1,0 +1,13 @@
+machine:
+  python:
+    version: 3.6.0
+
+
+dependencies:
+  post:
+    - pip install -r dev-requirements.txt
+
+
+test:
+  override:
+    - flake8 md_pdf/ --ignroe=E128,E501
