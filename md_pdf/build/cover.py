@@ -1,9 +1,16 @@
 from jinja2 import Template
+from md_pdf.utils import PROJECT_DIR
+import os
 
-def render_cover(context):
-    with open("cover-template.html") as f:
+
+COVER_TEMPLATE = os.path.join(PROJECT_DIR, 'assets', 'cover-template.html')
+OUTPUT_COVER_FILE = os.path.join(PROJECT_DIR, 'assets', 'cover.html')
+
+
+def render_cover(context={}):
+    with open(COVER_TEMPLATE) as f:
         template = Template(f.read())
-    with open("cover.html", "w") as f:
+    with open(OUTPUT_COVER_FILE, "w") as f:
         cover = template.render(context)
         f.write(cover)
         return cover
