@@ -23,8 +23,9 @@ class MDPDFCLI(click.MultiCommand):
                 code = compile(f.read(), fn, 'exec')
                 eval(code, ns, ns)
             return ns['cli']
-        except:
-            return
+        except Exception as e:
+            print("An Error Occured:s")
+            raise e
 
 
 cli = MDPDFCLI(help='This tool\'s subcommands are loaded from a plugin folder dynamically.')

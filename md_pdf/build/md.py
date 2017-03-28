@@ -6,6 +6,5 @@ def get_files_content(filenames):
             yield f.read()
 
 
-def read_files(files_glob):
-    filenames = glob.glob(files_glob)
+def read_files(filenames):
     return '\n'.join(list(get_files_content(filenames)))
