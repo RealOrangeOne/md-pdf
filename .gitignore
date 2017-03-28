@@ -86,3 +86,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+out/
+md_pdf/assets/cover.html

@@ -1,0 +1,9 @@
+body.cover {
+  margin: 0 auto;
+  text-align: center;
+}
+
+body.cover h1 {
+  font-size: 72px;
+  padding-top: 400px;
+}

@@ -1,7 +1,8 @@
 import click
 from md_pdf.build.md import read_files
-from md_pdf.build.pandoc import build_document
+from md_pdf.build.pandoc import build_document, output_html
 from md_pdf.build.cover import render_cover
+from md_pdf.build.pdf import export_pdf
 
 
 @click.command('build', short_help="Build document")
@@ -11,6 +12,9 @@ from md_pdf.build.cover import render_cover
 def cli(in_files, bibliography, output):
     data = read_files(in_files)
     doc = build_document(data, bibliography)
+    output_html(doc, output)
     render_cover()
+    export_pdf(doc, output)
+    return 0
 
 

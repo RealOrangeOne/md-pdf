@@ -16,6 +16,11 @@ def fix_references_title(content):
     return soup.prettify()
 
 
+def output_html(html, out_dir):
+    with open(os.path.join(out_dir, 'output.html'), 'w') as f:
+        f.write(html)
+
+
 def build_document(files_content, bibliography):
     args = [
         '-s',
