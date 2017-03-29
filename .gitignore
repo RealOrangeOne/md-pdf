@@ -89,3 +89,5 @@ ENV/
 
 out/
 md_pdf/assets/cover.html
+md_pdf/assets/csl/
+md_pdf/assets/styles-master/

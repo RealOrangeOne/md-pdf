@@ -9,6 +9,7 @@ setup(
         "dotmap==1.2.17",
         "jinja2==2.9.5",
         "pdfkit==0.6.1",
+        "progressbar2==3.16.0",
         "pypandoc==1.3.3",
         "PyYAML==3.12"
     ],
