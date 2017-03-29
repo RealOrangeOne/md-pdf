@@ -7,10 +7,10 @@ import os
 
 
 def build(config):
-    data = read_files(os.path.join(WORKING_DIR, '*.md'))
+    data = read_files(os.path.abspath(config.input))
     doc = build_document(data, os.path.join(WORKING_DIR, 'bib.yaml'))
     if 'html' in config.output_formats:
-        output_html(doc, os.path.join(WORKING_DIR, 'out'))
+        output_html(doc, os.path.abspath(config.output_dir))
     if 'pdf' in config.output_formats:
         render_cover()
-        export_pdf(doc, os.path.join(WORKING_DIR, 'out'))
+        export_pdf(doc, os.path.abspath(config.output_dir))
