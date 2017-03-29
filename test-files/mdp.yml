@@ -1,0 +1,5 @@
+input: "*.md"
+output_formats:
+  - html
+  - pdf
+output_dir: out/

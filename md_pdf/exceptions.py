@@ -1,6 +1,10 @@
-class PrematureExit(Exception):
+class BaseException(Exception):
     pass
 
 
-class ConfigValidationException(Exception):
+class PrematureExit(BaseException):
+    pass
+
+
+class ConfigValidationException(BaseException):
     pass
