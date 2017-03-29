@@ -10,7 +10,7 @@ REQUIRED_KEYS = [
 def check_required_keys(config):
     missing_keys = [key for key in REQUIRED_KEYS if key not in config]
     if missing_keys:
-        raise ConfigValidationException("Missing required keys: {}".format(missing_keys))
+        raise ConfigValidationException("Missing required keys: {}".format(", ".join(missing_keys)))
 
 
 def validate_config(config):
