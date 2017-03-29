@@ -3,6 +3,7 @@ from md_pdf.args import parse_args
 from md_pdf.exceptions import PrematureExit
 from md_pdf.build import build
 from md_pdf.config.read import load_config
+from md_pdf.config.validate import validate_config
 
 
 FORMAT = "[%(levelname)s]: %(message)s"
@@ -13,6 +14,7 @@ def cli():
     args = parse_args()
     try:
         config = load_config()
+        validate_config(config)
         build(args, config)
     except PrematureExit:
         return 0
