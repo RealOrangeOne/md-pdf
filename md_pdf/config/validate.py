@@ -26,8 +26,17 @@ def test_output(config):
         raise ConfigValidationException("Invalid output formats provided: '{}'".format(", ".join(invalid_formats)))
 
 
+def validate_bibliography(config):
+    if 'bibliography' not in config:
+        return
+    abs_bibliography = os.path.abspath(config.bibliography)
+    if not os.path.isfile(abs_bibliography):
+        raise ConfigValidationException("Invalid bibliography path: '{}'".format(abs_bibliography))
+
+
 def validate_config(config):
     check_required_keys(config)
     test_output(config)
+    validate_bibliography(config)
 
 

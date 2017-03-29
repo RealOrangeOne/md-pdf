@@ -21,7 +21,7 @@ def output_html(html, out_dir):
         f.write(html)
 
 
-def build_document(files_content, bibliography):
+def build_document(files_content, bibliography=None):
     args = [
         '-s',
     ]

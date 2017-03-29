@@ -3,3 +3,4 @@ output_formats:
   - html
   - pdf
 output_dir: out/
+bibliography: bib.yaml
