@@ -1,4 +1,4 @@
-from md_pdf.consts import PROJECT_DIR, CSL_DOWNLOAD_LINK, ASSET_DIR
+from md_pdf.consts import CSL_DOWNLOAD_LINK, ASSET_DIR, CSL_DIR
 from md_pdf.exceptions import PrematureExit
 import os
 import urllib
@@ -8,8 +8,8 @@ import shutil
 from md_pdf.utils import remove_dir
 from progressbar import ProgressBar
 
+
 CSL_TEMP_DIR = os.path.join(ASSET_DIR, 'styles-master')
-CSL_DIR = os.path.join(ASSET_DIR, 'csl')
 
 
 def check_csl():
