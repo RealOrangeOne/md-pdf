@@ -7,11 +7,11 @@ from md_pdf.config.validate import validate_config
 from md_pdf.csl import check_csl, download_csl
 
 FORMAT = "[%(levelname)s]: %(message)s"
-logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 
 
 def cli():
     args = parse_args()
+    logging.basicConfig(format=FORMAT, level=logging.INFO if args.verbose else logging.NOTSET)
     try:
         if args.update_csl:
             download_csl()
