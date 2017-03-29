@@ -1,5 +1,5 @@
 import pdfkit
-from md_pdf.utils import PROJECT_DIR
+from md_pdf.consts import PROJECT_DIR
 from md_pdf.build.cover import OUTPUT_COVER_FILE
 import os
 

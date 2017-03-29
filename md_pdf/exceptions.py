@@ -1,0 +1,2 @@
+class PrematureExit(Exception):
+    pass

@@ -1,7 +1,7 @@
 import pypandoc
 from bs4 import BeautifulSoup
 import os.path
-from md_pdf.utils import PROJECT_DIR
+from md_pdf.consts import PROJECT_DIR
 
 
 CSL_FILE = os.path.join(PROJECT_DIR, 'assets', 'harverd.csl')

@@ -1,5 +1,5 @@
 from jinja2 import Template
-from md_pdf.utils import PROJECT_DIR
+from md_pdf.consts import PROJECT_DIR
 import os
 
 
