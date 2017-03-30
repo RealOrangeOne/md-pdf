@@ -2,6 +2,7 @@ from md_pdf.exceptions import ConfigValidationException
 from md_pdf.consts import CSL_DIR
 import glob
 import os
+from dotmap import DotMap
 
 
 REQUIRED_KEYS = [
@@ -48,11 +49,28 @@ def validate_bibliography(config):
             raise ConfigValidationException("Could not find CSL '{}'".format(config.bibliography.csl))
 
 
+def validate_context(config):
+    if 'context' not in config:
+        return
+
+    if type(config.context) != DotMap:
+        raise ConfigValidationException("Context must be key:value store")
+
+    non_str_keys = [key for key in config.context.keys() if type(key) != str]
+    if non_str_keys:
+        raise ConfigValidationException("Context keys must be strings. Non-strings: {}".format(", ".join(non_str_keys)))
+
+    invalid_values = [value for value in config.context.values() if type(value) in [list, dict, DotMap]]
+    if invalid_values:
+        raise ConfigValidationException("Context keys must be plain. Invalid values: {}".format(", ".join(invalid_values)))
+
+
 def validate_config(config):
     for validator in [
         check_required_keys,
         test_input,
         test_output,
-        validate_bibliography
+        validate_bibliography,
+        validate_context
     ]:
         validator(config)

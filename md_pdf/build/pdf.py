@@ -21,14 +21,13 @@ PDF_OPTIONS = {
     "footer-spacing": 5,
     "header-spacing": 5,
 
-    "replace": [
-
-    ]
 }
 
 
 def export_pdf(content, config):
     PDF_OPTIONS['title'] = getattr(config, 'title', 'output')
+    PDF_OPTIONS['replace'] = list(config.context.items())
+
     return pdfkit.from_string(
         content,
         os.path.join(os.path.abspath(config.output_dir), 'output.pdf'),

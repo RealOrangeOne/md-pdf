@@ -6,3 +6,5 @@ output_dir: out/
 bibliography:
   references: bib.yaml
   csl: apa
+context:
+  foo: bar
