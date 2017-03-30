@@ -24,12 +24,12 @@ PDF_OPTIONS = {
 
 
 def export_pdf(content, config):
-    PDF_OPTIONS['title'] = getattr(config, 'title', 'output')
-    PDF_OPTIONS['replace'] = list(config.context.items())
+    PDF_OPTIONS['title'] = config.get('title', 'Output')
+    PDF_OPTIONS['replace'] = list(config['context'].items())
 
     return pdfkit.from_string(
         content,
-        os.path.join(os.path.abspath(config.output_dir), 'output.pdf'),
+        os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
         options=PDF_OPTIONS,
         css=STYLE_FILE,
         cover=OUTPUT_COVER_FILE

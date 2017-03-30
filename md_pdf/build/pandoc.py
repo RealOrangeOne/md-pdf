@@ -35,8 +35,8 @@ def build_document(files_content, bibliography, context):
     filters = []
     if bibliography is not None:
         args += [
-            '--bibliography={}'.format(os.path.abspath(bibliography.references)),
-            '--csl={}'.format(os.path.join(CSL_DIR, "{}.csl".format(bibliography.csl)))
+            '--bibliography={}'.format(os.path.abspath(bibliography['references'])),
+            '--csl={}'.format(os.path.join(CSL_DIR, "{}.csl".format(bibliography['csl'])))
         ]
         filters.append('pandoc-citeproc')
 
@@ -48,4 +48,4 @@ def build_document(files_content, bibliography, context):
         filters=filters
     ))
 
-    return parse_template(html, context.toDict())
+    return parse_template(html, context)

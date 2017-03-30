@@ -2,7 +2,6 @@ from md_pdf.exceptions import ConfigValidationException
 from md_pdf.consts import CSL_DIR
 import glob
 import os
-from dotmap import DotMap
 
 
 REQUIRED_KEYS = [
@@ -19,18 +18,16 @@ def check_required_keys(config):
 
 
 def test_output(config):
-    abs_output_dir = os.path.abspath(config.output_dir)
+    abs_output_dir = os.path.abspath(config['output_dir'])
     if not os.path.isdir(abs_output_dir):
         raise ConfigValidationException("Can't find output directory '{}'".format(abs_output_dir))
-    if not config.output_formats:
-        raise ConfigValidationException("No output formats specified")
-    invalid_formats = [key for key in config.output_formats if key not in ['html', 'pdf']]
+    invalid_formats = [key for key in config['output_formats'] if key not in ['html', 'pdf']]
     if invalid_formats:
         raise ConfigValidationException("Invalid output formats provided: '{}'".format(", ".join(invalid_formats)))
 
 
 def test_input(config):
-    abs_input = os.path.abspath(config.input)
+    abs_input = os.path.abspath(config['input'])
     if len(glob.glob(abs_input)) == 0:
         raise ConfigValidationException("No files found at {}".format(abs_input))
 
@@ -38,14 +35,14 @@ def test_input(config):
 def validate_bibliography(config):
     if 'bibliography' not in config:
         return
-    if 'references' not in config.bibliography:
+    if 'references' not in config['bibliography']:
         raise ConfigValidationException("Missing References Path")
 
-    abs_bibliography = os.path.abspath(config.bibliography.references)
+    abs_bibliography = os.path.abspath(config['bibliography']['references'])
     if not os.path.isfile(abs_bibliography):
         raise ConfigValidationException("Invalid bibliography path: '{}'".format(abs_bibliography))
-    if 'csl' in config.bibliography:
-        if not os.path.isfile(os.path.join(CSL_DIR, "{}.csl".format(config.bibliography.csl))):
+    if 'csl' in config['bibliography']:
+        if not os.path.isfile(os.path.join(CSL_DIR, "{}.csl".format(config['bibliography']['csl']))):
             raise ConfigValidationException("Could not find CSL '{}'".format(config.bibliography.csl))
 
 
@@ -53,14 +50,14 @@ def validate_context(config):
     if 'context' not in config:
         return
 
-    if type(config.context) != DotMap:
+    if type(config['context']) != dict:
         raise ConfigValidationException("Context must be key:value store")
 
-    non_str_keys = [key for key in config.context.keys() if type(key) != str]
+    non_str_keys = [key for key in config['context'].keys() if type(key) != str]
     if non_str_keys:
         raise ConfigValidationException("Context keys must be strings. Non-strings: {}".format(", ".join(non_str_keys)))
 
-    invalid_values = [value for value in config.context.values() if type(value) in [list, dict, DotMap]]
+    invalid_values = [value for value in config['context'].values() if type(value) in [list, dict]]
     if invalid_values:
         raise ConfigValidationException("Context keys must be plain. Invalid values: {}".format(", ".join(invalid_values)))
 

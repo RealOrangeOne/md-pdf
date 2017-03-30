@@ -6,7 +6,6 @@ setup(
     version="1.0",
     install_requires=[
         "beautifulsoup4==4.5.3",
-        "dotmap==1.2.17",
         "jinja2==2.9.5",
         "pdfkit==0.6.1",
         "progressbar2==3.16.0",
