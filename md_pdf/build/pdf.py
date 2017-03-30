@@ -1,12 +1,12 @@
 import pdfkit
-from md_pdf.consts import PROJECT_DIR
+from md_pdf.consts import ASSET_DIR
 from md_pdf.build.cover import OUTPUT_COVER_FILE
 import os
 
 
-STYLE_FILE = os.path.join(PROJECT_DIR, 'assets', 'style.css')
-HEADER_FILE = os.path.join(PROJECT_DIR, 'assets', 'header.html')
-FOOTER_FILE = os.path.join(PROJECT_DIR, 'assets', 'footer.html')
+STYLE_FILE = os.path.join(ASSET_DIR, 'style.css')
+HEADER_FILE = os.path.join(ASSET_DIR, 'header.html')
+FOOTER_FILE = os.path.join(ASSET_DIR, 'footer.html')
 PDF_OPTIONS = {
     "quiet": "",
     "no-pdf-compression": "",
@@ -21,17 +21,17 @@ PDF_OPTIONS = {
     "footer-spacing": 5,
     "header-spacing": 5,
 
-    "title": "Title thing",
     "replace": [
 
     ]
 }
 
 
-def export_pdf(content, out_dir):
+def export_pdf(content, config):
+    PDF_OPTIONS['title'] = getattr(config, 'title', 'output')
     return pdfkit.from_string(
         content,
-        os.path.join(out_dir, 'output.pdf'),
+        os.path.join(os.path.abspath(config.output_dir), 'output.pdf'),
         options=PDF_OPTIONS,
         css=STYLE_FILE,
         cover=OUTPUT_COVER_FILE

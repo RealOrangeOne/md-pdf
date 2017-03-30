@@ -13,4 +13,4 @@ def build(config):
         output_html(doc, os.path.abspath(config.output_dir))
     if 'pdf' in config.output_formats:
         render_cover()
-        export_pdf(doc, os.path.abspath(config.output_dir))
+        export_pdf(doc, config)
