@@ -1,4 +1,5 @@
 from md_pdf.exceptions import ConfigValidationException
+from md_pdf.consts import CSL_DIR
 import os
 
 
@@ -29,9 +30,15 @@ def test_output(config):
 def validate_bibliography(config):
     if 'bibliography' not in config:
         return
-    abs_bibliography = os.path.abspath(config.bibliography)
+    if 'references' not in config.bibliography:
+        raise ConfigValidationException("Missing References Path")
+
+    abs_bibliography = os.path.abspath(config.bibliography.references)
     if not os.path.isfile(abs_bibliography):
         raise ConfigValidationException("Invalid bibliography path: '{}'".format(abs_bibliography))
+    if 'csl' in config.bibliography:
+        if not os.path.isfile(os.path.join(CSL_DIR, "{}.csl".format(config.bibliography.csl))):
+            raise ConfigValidationException("Could not find CSL '{}'".format(config.bibliography.csl))
 
 
 def validate_config(config):

@@ -1,7 +1,7 @@
 import pypandoc
 from bs4 import BeautifulSoup
-import os.path
-from md_pdf.consts import PROJECT_DIR
+import os
+from md_pdf.consts import PROJECT_DIR, CSL_DIR
 
 
 CSL_FILE = os.path.join(PROJECT_DIR, 'assets', 'harverd.csl')
@@ -21,15 +21,15 @@ def output_html(html, out_dir):
         f.write(html)
 
 
-def build_document(files_content, bibliography=None):
+def build_document(files_content, bibliography):
     args = [
         '-s',
     ]
     filters = []
     if bibliography is not None:
         args += [
-            '--bibliography={}'.format(bibliography),
-            '--csl={}'.format(CSL_FILE)
+            '--bibliography={}'.format(os.path.abspath(bibliography.references)),
+            '--csl={}'.format(os.path.join(CSL_DIR, "{}.csl".format(bibliography.csl)))
         ]
         filters.append('pandoc-citeproc')
 

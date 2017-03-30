@@ -3,4 +3,6 @@ output_formats:
   - html
   - pdf
 output_dir: out/
-bibliography: bib.yaml
+bibliography:
+  references: bib.yaml
+  csl: apa
