@@ -49,9 +49,12 @@ def validate_bibliography(config):
 
 
 def validate_config(config):
-    check_required_keys(config)
-    test_input(config)
-    test_output(config)
-    validate_bibliography(config)
+    for validator in [
+        check_required_keys,
+        test_input,
+        test_output,
+        validate_bibliography
+    ]:
+        validator(config)
 
 
