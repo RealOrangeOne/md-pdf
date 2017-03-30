@@ -1,5 +1,6 @@
 from md_pdf.exceptions import ConfigValidationException
 from md_pdf.consts import CSL_DIR
+import glob
 import os
 
 
@@ -27,6 +28,12 @@ def test_output(config):
         raise ConfigValidationException("Invalid output formats provided: '{}'".format(", ".join(invalid_formats)))
 
 
+def test_input(config):
+    abs_input = os.path.abspath(config.input)
+    if len(glob.glob(abs_input)) == 0:
+        raise ConfigValidationException("No files found at {}".format(abs_input))
+
+
 def validate_bibliography(config):
     if 'bibliography' not in config:
         return
@@ -43,6 +50,7 @@ def validate_bibliography(config):
 
 def validate_config(config):
     check_required_keys(config)
+    test_input(config)
     test_output(config)
     validate_bibliography(config)
 
