@@ -6,6 +6,7 @@ from md_pdf.consts import PROJECT_DIR, CSL_DIR
 
 CSL_FILE = os.path.join(PROJECT_DIR, 'assets', 'harverd.csl')
 
+
 def fix_references_title(content):
     soup = BeautifulSoup(content, 'html.parser')
     reference_element = soup.find('div', class_='references')
@@ -33,7 +34,10 @@ def build_document(files_content, bibliography):
         ]
         filters.append('pandoc-citeproc')
 
-    html = pypandoc.convert_text(files_content, 'html', format='md',
+    html = pypandoc.convert_text(
+        files_content,
+        'html',
+        format='md',
         extra_args=args,
         filters=filters
     )

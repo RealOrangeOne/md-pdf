@@ -1,5 +1,6 @@
 import glob
 
+
 def get_files_content(filenames):
     for filename in filenames:
         with open(filename) as f:

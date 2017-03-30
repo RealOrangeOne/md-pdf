@@ -1,4 +1,3 @@
-from md_pdf.consts import WORKING_DIR
 from md_pdf.build.md import read_files
 from md_pdf.build.pandoc import build_document, output_html
 from md_pdf.build.cover import render_cover

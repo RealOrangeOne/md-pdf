@@ -56,5 +56,3 @@ def validate_config(config):
         validate_bibliography
     ]:
         validator(config)
-
-
