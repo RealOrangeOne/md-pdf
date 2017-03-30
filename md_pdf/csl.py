@@ -28,7 +28,7 @@ def download_csl():
 
     _, download_location = tempfile.mkstemp()
     bar.start()
-    urllib.request.urlretrieve(CSL_DOWNLOAD_LINK, download_location, reporthook=download_handle)
+    urllib.request.urlretrieve(CSL_DOWNLOAD_LINK, download_location, reporthook=download_handle)  # nosec
     bar.finish()
 
     with open(download_location, 'rb') as downloaded_file:
@@ -45,3 +45,4 @@ def download_csl():
     shutil.copytree(CSL_TEMP_DIR, CSL_DIR)
     os.remove(download_location)
     remove_dir(CSL_TEMP_DIR)
+    urllib.request.urlcleanup()
