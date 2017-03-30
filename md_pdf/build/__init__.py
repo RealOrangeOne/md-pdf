@@ -7,7 +7,7 @@ import os
 
 def build(config):
     data = read_files(os.path.abspath(config.input))
-    doc = build_document(data, getattr(config, 'bibliography', None))
+    doc = build_document(data, getattr(config, 'bibliography', None), getattr(config, 'context', None))
     if 'html' in config.output_formats:
         output_html(doc, os.path.abspath(config.output_dir))
     if 'pdf' in config.output_formats:

@@ -8,3 +8,5 @@ bibliography:
   csl: apa
 context:
   foo: bar
+  bar: foo
+title: test

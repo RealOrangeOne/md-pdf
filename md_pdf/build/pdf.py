@@ -20,7 +20,6 @@ PDF_OPTIONS = {
     "footer-html": FOOTER_FILE,
     "footer-spacing": 5,
     "header-spacing": 5,
-
 }
 
 

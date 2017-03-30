@@ -2,6 +2,7 @@ import pypandoc
 from bs4 import BeautifulSoup
 import os
 from md_pdf.consts import PROJECT_DIR, CSL_DIR
+from jinja2 import Template
 
 
 CSL_FILE = os.path.join(PROJECT_DIR, 'assets', 'harverd.csl')
@@ -22,7 +23,12 @@ def output_html(html, out_dir):
         f.write(html)
 
 
-def build_document(files_content, bibliography):
+def parse_template(html, context):
+    template = Template(html)
+    return template.render(context)
+
+
+def build_document(files_content, bibliography, context):
     args = [
         '-s',
     ]
@@ -34,12 +40,12 @@ def build_document(files_content, bibliography):
         ]
         filters.append('pandoc-citeproc')
 
-    html = pypandoc.convert_text(
+    html = fix_references_title(pypandoc.convert_text(
         files_content,
         'html',
         format='md',
         extra_args=args,
         filters=filters
-    )
+    ))
 
-    return fix_references_title(html)
+    return parse_template(html, context.toDict())
