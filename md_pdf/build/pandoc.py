@@ -5,9 +5,6 @@ from md_pdf.consts import PROJECT_DIR, CSL_DIR
 from jinja2 import Template
 
 
-CSL_FILE = os.path.join(PROJECT_DIR, 'assets', 'harverd.csl')
-
-
 def fix_references_title(content):
     soup = BeautifulSoup(content, 'html.parser')
     reference_element = soup.find('div', class_='references')
