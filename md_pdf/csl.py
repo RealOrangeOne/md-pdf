@@ -21,7 +21,7 @@ def download_csl():
     bar = ProgressBar()
 
     remove_dir(CSL_DIR)
-    remove_dir(os.path.join(ASSET_DIR, 'styles-master'))
+    remove_dir(CSL_DOWNLOAD_LINK)
 
     def download_handle(count, block_size, total_size):
         bar.update(int(count * block_size * 100 / total_size))
