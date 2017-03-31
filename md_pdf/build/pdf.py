@@ -25,7 +25,7 @@ PDF_OPTIONS = {
 
 def export_pdf(content, config):
     PDF_OPTIONS['title'] = config.get('title', 'Output')
-    PDF_OPTIONS['replace'] = list(config['context'].items())
+    PDF_OPTIONS['replace'] = [(key, str(value)) for key, value in config['context'].items()]
 
     return pdfkit.from_string(
         content,

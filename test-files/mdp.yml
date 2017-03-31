@@ -9,4 +9,6 @@ bibliography:
 context:
   foo: bar
   bar: foo
-title: test
+  student_number: 123456
+  turnitin_number: 789123
+title: test title

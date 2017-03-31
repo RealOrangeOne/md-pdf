@@ -5,13 +5,16 @@
   </head>
   <body class="cover">
     <h1>{{ title }}</h1>
-    <h3>{{ subtitle }}</h3>
+    {% if subtitle %}
+      <h3>{{ subtitle }}</h3>
+    {% endif %}
+
     {% if student_number %}
-      <h5>Student Number: {{ student_number }}</h5>
+      <h4>Student Number: {{ student_number }}</h4>
     {% endif %}
 
     {% if turnitin_number %}
-      <h5>TurnItIn Number: {{ turnitin_number }}</h5>
+      <h4>TurnItIn Number: {{ turnitin_number }}</h4>
     {% endif %}
   </body>
 </html>
