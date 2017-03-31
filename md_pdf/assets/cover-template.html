@@ -6,5 +6,12 @@
   <body class="cover">
     <h1>{{ title }}</h1>
     <h3>{{ subtitle }}</h3>
+    {% if student_number %}
+      <h5>Student Number: {{ student_number }}</h5>
+    {% endif %}
+
+    {% if turnitin_number %}
+      <h5>TurnItIn Number: {{ turnitin_number }}</h5>
+    {% endif %}
   </body>
 </html>
