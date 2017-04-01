@@ -2,6 +2,10 @@ from md_pdf.exceptions import ConfigValidationException
 from md_pdf.consts import CSL_DIR
 import glob
 import os
+import logging
+
+
+logger = logging.getLogger(__file__)
 
 
 REQUIRED_KEYS = [
@@ -63,6 +67,7 @@ def validate_context(config):
 
 
 def validate_config(config):
+    logger.info("Validating Config...")
     for validator in [
         check_required_keys,
         test_input,

@@ -3,9 +3,13 @@ from md_pdf.build.pandoc import build_document, output_html
 from md_pdf.build.cover import render_cover
 from md_pdf.build.pdf import export_pdf
 import os
+import logging
+
+logger = logging.getLogger(__file__)
 
 
 def build(config):
+    logger.info("Starting Build...")
     data = read_files(os.path.abspath(config['input']))
     doc = build_document(data, config.get('bibliography'), config.get('context'))
     if 'html' in config['output_formats']:

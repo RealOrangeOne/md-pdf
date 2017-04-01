@@ -11,7 +11,7 @@ FORMAT = "[%(levelname)s]: %(message)s"
 
 def cli():
     args = parse_args()
-    logging.basicConfig(format=FORMAT, level=logging.INFO if args.verbose else logging.NOTSET)
+    logging.basicConfig(format=FORMAT, level=logging.WARN if args.verbose else logging.INFO)
     try:
         if args.update_csl:
             download_csl()
