@@ -25,4 +25,7 @@ def cli():
     except BaseException as e:
         logging.error(str(e))
         return 1
+    except KeyboardInterrupt:
+        logging.error("Aborted.")
+        return 1
     return 0
