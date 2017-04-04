@@ -11,7 +11,7 @@ OUTPUT_COVER_FILE = os.path.join(ASSET_DIR, 'cover.html')
 
 
 def render_cover(config):
-    logger.info("Rendering Cover...")
+    logger.debug("Rendering Cover...")
     context = config['context'].copy()
     context['title'] = config['title']
     with open(COVER_TEMPLATE) as f:

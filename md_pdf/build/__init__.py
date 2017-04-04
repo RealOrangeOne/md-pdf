@@ -9,7 +9,7 @@ logger = logging.getLogger(__file__)
 
 
 def build(config):
-    logger.info("Starting Build...")
+    logger.debug("Starting Build...")
     data = read_files(os.path.abspath(config['input']))
     doc = build_document(data, config.get('bibliography'), config.get('context'))
     if 'html' in config['output_formats']:
