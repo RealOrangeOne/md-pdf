@@ -69,7 +69,6 @@ def validate_context(config):
 
 
 def validate_config(config):
-    logger.info("Validating Config...")
     for validator in [
         check_required_keys,
         test_input,
