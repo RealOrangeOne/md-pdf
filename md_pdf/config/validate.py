@@ -41,6 +41,8 @@ def validate_bibliography(config):
         return
     if 'references' not in config['bibliography']:
         raise ConfigValidationException("Missing References Path")
+    if 'csl' not in config['bibliography']:
+        raise ConfigValidationException("Missing CSL Name")
 
     abs_bibliography = os.path.abspath(config['bibliography']['references'])
     if not os.path.isfile(abs_bibliography):
