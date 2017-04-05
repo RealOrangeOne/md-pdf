@@ -1,13 +1,13 @@
 from jinja2 import Template
-from md_pdf.consts import ASSET_DIR
+from md_pdf.consts import TEMPLATES_DIR
 import os
 import logging
 
 logger = logging.getLogger(__file__)
 
 
-COVER_TEMPLATE = os.path.join(ASSET_DIR, 'cover-template.html')
-OUTPUT_COVER_FILE = os.path.join(ASSET_DIR, 'cover.html')
+COVER_TEMPLATE = os.path.join(TEMPLATES_DIR, 'cover-template.html')
+OUTPUT_COVER_FILE = os.path.join(TEMPLATES_DIR, 'cover.html')
 
 
 def render_cover(config):

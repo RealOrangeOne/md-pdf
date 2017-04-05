@@ -1,5 +1,5 @@
 import pdfkit
-from md_pdf.consts import ASSET_DIR
+from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
 from md_pdf.build.cover import OUTPUT_COVER_FILE
 import os
 import logging
@@ -7,9 +7,9 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-STYLE_FILE = os.path.join(ASSET_DIR, 'style.css')
-HEADER_FILE = os.path.join(ASSET_DIR, 'header.html')
-FOOTER_FILE = os.path.join(ASSET_DIR, 'footer.html')
+STYLE_FILE = os.path.join(STATIC_DIR, 'style.css')
+HEADER_FILE = os.path.join(TEMPLATES_DIR, 'header.html')
+FOOTER_FILE = os.path.join(TEMPLATES_DIR, 'footer.html')
 PDF_OPTIONS = {
     "quiet": "",
     "no-pdf-compression": "",
