@@ -10,6 +10,7 @@ setup(
         "pdfkit==0.6.1",
         "progressbar2==3.16.0",
         "pypandoc==1.3.3",
+        "pyscss==1.3.5",
         "PyYAML==3.12"
     ],
     entry_points="""
