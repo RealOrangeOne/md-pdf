@@ -8,12 +8,10 @@ machine:
 dependencies:
   post:
     - pip install -r dev-requirements.txt
-    - npm install
 
 
 test:
-  override:
+  post:
     - flake8 md_pdf/ --ignore=E128,E501
     - safety check
     - bandit -r md_pdf/
-    - npm test
