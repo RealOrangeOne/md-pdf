@@ -92,3 +92,4 @@ md_pdf/assets/templates/cover.html
 md_pdf/assets/static/style.css
 md_pdf/assets/csl/
 md_pdf/assets/styles-master/
+node_modules/

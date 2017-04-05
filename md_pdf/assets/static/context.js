@@ -1,3 +1,5 @@
+'use strict';
+
 function subst() {
   var vars = {};
   var query_strings_from_url = document.location.search.substring(1).split('&');
@@ -18,3 +20,5 @@ function subst() {
     }
   }
 }
+
+window.subst = subst();

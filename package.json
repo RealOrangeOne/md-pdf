@@ -4,7 +4,9 @@
   "private": true,
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint-scss && npm run lint-js",
+    "lint-scss": "sass-lint -vq md_pdf/assets/static/**/*.scss",
+    "lint-js": "eslint -c eslint-config-dabapps/base/.eslintrc md_pdf/assets/static/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,7 @@
   },
   "homepage": "https://github.com/RealOrangeOne/md-pdf#readme",
   "devDependencies": {
-    "eslint-config": "dabapps/eslint-config.git#2.0.4"
+    "eslint-config": "dabapps/eslint-config.git#2.0.4",
+    "sass-lint": "1.10.2"
   }
 }
