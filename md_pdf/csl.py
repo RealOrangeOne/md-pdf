@@ -17,7 +17,7 @@ CSL_TEMP_DIR = os.path.join(ASSET_DIR, 'styles-master')
 
 def check_csl():
     if not os.path.isdir(CSL_DIR) or os.listdir(CSL_DIR) == []:
-        raise PrematureExit("No CSL files found!")
+        raise PrematureExit("No CSL files found! Run again with --update-csl")
 
 
 def download_csl():
