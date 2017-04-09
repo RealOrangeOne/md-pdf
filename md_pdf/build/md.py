@@ -8,5 +8,5 @@ def get_files_content(filenames):
 
 
 def read_files(files_glob):
-    filenames = glob.iglob(files_glob)
+    filenames = sorted(glob.glob(files_glob))
     return '\n'.join(list(get_files_content(filenames)))
