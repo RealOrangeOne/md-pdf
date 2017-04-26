@@ -12,7 +12,7 @@ dependencies:
 
   post:
     - pip install -r dev-requirements.txt
-    - pip install -e .
+    - sudo pip install -e .
 
 
 test:
