@@ -16,6 +16,18 @@ Convert markdown files into PDF Documents.
 __Note__: All features are completely optional
 
 
+### Installation
+This library isn't on Pypi, but can still be installed using pip:
+
+    pip install https://github.com/RealOrangeOne/md-pdf
+
+Additionally, you will need the following programs:
+- `wkhtmltopdf` (With QT - [See Here](https://pypi.python.org/pypi/pdfkit))
+- `pandoc`
+- `pandoc-siteproc`
+
+These packages should be available on most linux distributions, OSX and Windows support is untested!
+
 ### Usage
     $ mdp --help
     usage: mdp [-h] [-v] [--update-csl]
