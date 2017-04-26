@@ -2,13 +2,8 @@ sudo: false
 language: python
 python: "3.6"
 
-addons:
-  apt:
-    packages:
-    - pandoc
-    - pandoc-citeproc
-
 before_install:
+  - sudo apt-get install pandoc pandoc-citeproc
   - bash scripts/before_script.sh
 
 install:
