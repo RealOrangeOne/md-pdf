@@ -1,0 +1,18 @@
+sudo: false
+language: python
+python: "3.6"
+
+addons:
+  apt:
+    packages:
+    - pandoc
+    - pandoc-citeproc
+
+before_install:
+  - bash scripts/before_script.sh
+
+install:
+  - python3 setup.py install
+
+script:
+  - cd test-files && mdp -vvv
