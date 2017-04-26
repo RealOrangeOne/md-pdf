@@ -7,7 +7,7 @@ machine:
 
 dependencies:
   pre:
-    - sudo apt update && sudo apt install pandoc pandoc-citeproc python-dev python3
+    - sudo apt update && sudo apt install pandoc pandoc-citeproc python-dev python3-dev
     - bash scripts/before_script.sh
 
   post:
