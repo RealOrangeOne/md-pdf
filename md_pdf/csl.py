@@ -46,8 +46,8 @@ def download_csl():
 
             bar.finish()
 
-    os.close(_)
     logger.info("Cleaning Up...")
+    os.close(_)
     shutil.copytree(CSL_TEMP_DIR, CSL_DIR)
     os.remove(download_location)
     remove_dir(CSL_TEMP_DIR)
