@@ -24,7 +24,6 @@ def download_csl():
     bar = ProgressBar()
 
     remove_dir(CSL_DIR)
-    remove_dir(CSL_DOWNLOAD_LINK)
 
     def download_handle(count, block_size, total_size):
         bar.update(int(count * block_size * 100 / total_size))
@@ -47,6 +46,7 @@ def download_csl():
 
             bar.finish()
 
+    os.close(_)
     logger.info("Cleaning Up...")
     shutil.copytree(CSL_TEMP_DIR, CSL_DIR)
     os.remove(download_location)
