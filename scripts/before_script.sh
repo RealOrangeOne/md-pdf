@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# 'stolen' from https://github.com/JazzCore/python-pdfkit/blob/master/travis/before-script.sh
+
 set -e
 
 sudo apt-get install -y openssl build-essential xorg libssl-dev
