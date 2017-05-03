@@ -23,6 +23,8 @@ PDF_OPTIONS = {
     "footer-html": FOOTER_FILE,
     "footer-spacing": 5,
     "header-spacing": 5,
+
+    "user-style-sheet": STYLE_FILE
 }
 
 
@@ -34,6 +36,5 @@ def export_pdf(content, config):
         content,
         os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
         options=PDF_OPTIONS,
-        css=STYLE_FILE,
         cover=OUTPUT_COVER_FILE
     )
