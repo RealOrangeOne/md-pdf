@@ -6,6 +6,10 @@ machine:
 
 
 dependencies:
+  pre:
+    - sudo apt install pandoc pandoc-citeproc
+    - bash scripts/before_script.sh
+
   post:
     - pip install -r dev-requirements.txt
 
@@ -15,3 +19,4 @@ test:
     - flake8 md_pdf/ --ignore=E128,E501
     - safety check
     - bandit -r md_pdf/
+    - mdp --help
