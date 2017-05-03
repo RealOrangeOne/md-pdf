@@ -19,8 +19,6 @@ def cli():
         config = load_config()
         validate_config(config)
         build(config)
-    except PrematureExit:
-        return 0
     except BaseException as e:
         logging.error(str(e))
         return 1
