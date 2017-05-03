@@ -1,3 +1,4 @@
+---
 references:
 - id: item1
   type: book
@@ -38,3 +39,4 @@ references:
   container-title: Third book
   publisher: Oxford University Press
   publisher-place: Oxford
+...
