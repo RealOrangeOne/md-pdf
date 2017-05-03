@@ -4,6 +4,9 @@ machine:
   node:
     version: 6.10.2
 
+general:
+  artifacts:
+    - test-files/out/
 
 dependencies:
   pre:
