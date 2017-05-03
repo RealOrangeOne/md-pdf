@@ -24,7 +24,8 @@ def check_required_keys(config):
 def test_output(config):
     abs_output_dir = os.path.abspath(config['output_dir'])
     if not os.path.isdir(abs_output_dir):
-        raise ConfigValidationException("Can't find output directory '{}'".format(abs_output_dir))
+        logger.debug("Creating output directory...")
+        os.mkdir(abs_output_dir)
     invalid_formats = [key for key in config['output_formats'] if key not in ['html', 'pdf']]
     if invalid_formats:
         raise ConfigValidationException("Invalid output formats provided: '{}'".format(", ".join(invalid_formats)))

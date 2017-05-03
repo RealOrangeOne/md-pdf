@@ -1,6 +1,6 @@
 import logging
 from md_pdf.args import parse_args
-from md_pdf.exceptions import PrematureExit, BaseException
+from md_pdf.exceptions import BaseException
 from md_pdf.logging import set_verbosity
 from md_pdf.build import build
 from md_pdf.config.read import load_config
