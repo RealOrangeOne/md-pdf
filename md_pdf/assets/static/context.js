@@ -21,4 +21,5 @@ function subst() {
   }
 }
 
-window.subst = subst();
+
+subst();
