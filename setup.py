@@ -4,6 +4,7 @@ from setuptools import setup, find_packages
 setup(
     name="md-pdf",
     version="1.0",
+    use_scm_version=True,
     install_requires=[
         "beautifulsoup4==4.5.3",
         "jinja2==2.9.5",
@@ -13,12 +14,10 @@ setup(
         "pyscss==1.3.5",
         "PyYAML==3.12"
     ],
+    setup_requires=['setuptools_scm'],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
-    package_data={
-        '': ['*.js', '*.css', '*.html']
-    },
     entry_points="""
         [console_scripts]
         mdp=md_pdf.cli:cli
