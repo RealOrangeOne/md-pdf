@@ -15,6 +15,10 @@ setup(
     ],
     packages=find_packages(),
     include_package_data=True,
+    zip_safe=False,
+    package_data={
+        '': ['*.js', '*.css', '*.html']
+    },
     entry_points="""
         [console_scripts]
         mdp=md_pdf.cli:cli
