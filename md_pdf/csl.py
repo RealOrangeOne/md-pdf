@@ -26,7 +26,8 @@ def download_csl():
     remove_dir(CSL_DIR)
 
     def download_handle(count, block_size, total_size):
-        print(count, block_size, total_size, int(count * block_size * 100 / total_size))
+        if total_size < 1:  # only update the bar if we have a size
+            return
         bar.update(int(count * block_size * 100 / total_size))
 
     _, download_location = tempfile.mkstemp()
