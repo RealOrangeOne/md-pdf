@@ -1,4 +1,4 @@
-$image_spacing: 30px;
+$image-spacing: 30px;
 
 
 body.cover {
@@ -25,12 +25,12 @@ body.content {
   font-size: 12px;
 
   img {
+    margin-top: $image-spacing;
     width: 100%;
-    margin-top: $image_spacing
   }
 
   p.caption {
-    margin: 1px 5px $image_spacing;
+    margin: 1px 5px $image-spacing;
     padding: 0;
     font-style: italic;
   }

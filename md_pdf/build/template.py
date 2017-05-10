@@ -47,5 +47,3 @@ def parse_template(doc, config):
     ]:
         parsed_doc = parser(parsed_doc, config)
     return render_template(parsed_doc, config)
-
-
