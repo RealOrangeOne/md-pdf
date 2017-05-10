@@ -25,6 +25,13 @@ def add_base_tag(doc, config):
     return soup.prettify()
 
 
+def add_body_class(doc, config):
+    logger.debug("Adding Body Class...")
+    soup = BeautifulSoup(doc, 'html.parser')
+    soup.body['class'] = 'content'
+    return soup.prettify()
+
+
 def render_template(html, config):
     logger.debug("Rendering Template...")
     template = Template(html)
@@ -36,9 +43,9 @@ def parse_template(doc, config):
     for parser in [
         fix_references_title,
         add_base_tag,
-        render_template
+        add_body_class,
     ]:
         parsed_doc = parser(parsed_doc, config)
-    return parsed_doc
+    return render_template(parsed_doc, config)
 
 

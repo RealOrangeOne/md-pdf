@@ -16,7 +16,22 @@ body.cover {
   }
 }
 
-body, html {
+
+$image_spacing: 30px;
+
+body.content {
   line-height: 1.5;
   font-size: 12px;
+
+  img {
+    width: 100%;
+    margin-top: $image_spacing
+  }
+
+  p.caption {
+    margin: 0 5px $image_spacing;
+    padding: 0;
+    font-style: italic;
+  }
+
 }
