@@ -27,12 +27,21 @@ body.content {
   img {
     margin-top: $image-spacing;
     width: 100%;
+    page-break-after: avoid;
   }
 
   p.caption {
     margin: 1px 5px $image-spacing;
     padding: 0;
     font-style: italic;
+    page-break-before: avoid;
   }
 
+  .references-title {
+    page-break-after: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
 }

@@ -12,6 +12,7 @@ def fix_references_title(content, config):
     reference_element = soup.find('div', class_='references')
     if reference_element is not None:
         title = soup.new_tag('h1')
+        title['class'] = 'references-title'
         title.string = "References"
         reference_element.insert_before(title)
     return soup.prettify()
