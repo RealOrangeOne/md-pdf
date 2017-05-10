@@ -5,7 +5,8 @@ import logging
 
 logger = logging.getLogger(__file__)
 
-def fix_references_title(content):
+
+def fix_references_title(content, config):
     logger.debug("Adding Reference Title...")
     soup = BeautifulSoup(content, 'html.parser')
     reference_element = soup.find('div', class_='references')
@@ -31,8 +32,13 @@ def render_template(html, config):
 
 
 def parse_template(doc, config):
-    doc = fix_references_title(doc)
-    doc = add_base_tag(doc, config)
-    return render_template(doc, config)
+    parsed_doc = doc
+    for parser in [
+        fix_references_title,
+        add_base_tag,
+        render_template
+    ]:
+        parsed_doc = parser(parsed_doc, config)
+    return parsed_doc
 
 
