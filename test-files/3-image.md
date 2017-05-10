@@ -1,4 +1,4 @@
-# Test content
+# Test Image
 
 
 ![title](./test-image.png)

@@ -16,6 +16,9 @@ Convert markdown files into PDF Documents.
 __Note__: All features are completely optional
 
 
+### Documentation
+Documentation can be found in the `docs/` directory.
+
 ### Usage
     $ mdp --help
     usage: mdp [-h] [-v] [--update-csl]
