@@ -16,6 +16,7 @@ FOOTER_FILE = os.path.join(TEMPLATES_DIR, 'footer.html')
 PDF_OPTIONS = {
     "quiet": "",
     "no-pdf-compression": "",
+    "enable-internal-links": "",
 
     "header-html": HEADER_FILE,
     "footer-html": FOOTER_FILE,

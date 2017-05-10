@@ -21,8 +21,8 @@ def fix_references_title(content, config):
 def add_base_tag(doc, config):
     logger.debug("Adding Base Tag...")
     soup = BeautifulSoup(doc, 'html.parser')
-    base_tag = soup.new_tag('base', href=os.path.abspath(config['output_dir']))
-    soup.head.insert(0, base_tag)
+    for img in soup.findAll('img'):
+        img['src'] = os.path.abspath(img['src'])
     return soup.prettify()
 
 
