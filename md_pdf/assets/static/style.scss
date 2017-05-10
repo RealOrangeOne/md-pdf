@@ -1,3 +1,6 @@
+$image-spacing: 30px;
+
+
 body.cover {
   margin: 0 auto;
   text-align: center;
@@ -16,7 +19,20 @@ body.cover {
   }
 }
 
-body, html {
+
+body.content {
   line-height: 1.5;
   font-size: 12px;
+
+  img {
+    margin-top: $image-spacing;
+    width: 100%;
+  }
+
+  p.caption {
+    margin: 1px 5px $image-spacing;
+    padding: 0;
+    font-style: italic;
+  }
+
 }
