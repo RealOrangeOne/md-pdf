@@ -39,7 +39,7 @@ body.content {
   }
 
   .references-title {
-    page-break-after: avoid;
+    page-break-before: always;
   }
 
   h1, h2, h3, h4, h5, h6 {
