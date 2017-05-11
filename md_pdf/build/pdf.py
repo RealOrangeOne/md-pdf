@@ -4,6 +4,7 @@ from md_pdf.build.cover import OUTPUT_COVER_FILE
 import os
 import logging
 
+
 logger = logging.getLogger(__file__)
 
 
@@ -14,8 +15,8 @@ STYLE_FILE = os.path.join(STATIC_DIR, 'style.css')
 HEADER_FILE = os.path.join(TEMPLATES_DIR, 'header.html')
 FOOTER_FILE = os.path.join(TEMPLATES_DIR, 'footer.html')
 PDF_OPTIONS = {
-    "quiet": "",
     "no-pdf-compression": "",
+    "enable-internal-links": "",
 
     "header-html": HEADER_FILE,
     "footer-html": FOOTER_FILE,
@@ -27,6 +28,8 @@ PDF_OPTIONS = {
 
 
 def export_pdf(content, config):
+    if logger.getEffectiveLevel() > logging.DEBUG:
+        PDF_OPTIONS['quiet'] = ""
     PDF_OPTIONS['title'] = config.get('title', 'Output')
     PDF_OPTIONS['replace'] = [(key, str(value)) for key, value in config['context'].items()]
 

@@ -1,4 +1,5 @@
 $image-spacing: 30px;
+$font-size-base: 12px;
 
 
 body.cover {
@@ -6,7 +7,7 @@ body.cover {
   text-align: center;
 
   & h1 {
-    padding-top: 400px;
+    padding-top: 300px;
     font-size: 48px;
   }
 
@@ -22,17 +23,38 @@ body.cover {
 
 body.content {
   line-height: 1.5;
-  font-size: 12px;
+  font-size: $font-size-base;
 
   img {
     margin-top: $image-spacing;
     width: 100%;
+    page-break-after: avoid;
   }
 
   p.caption {
     margin: 1px 5px $image-spacing;
     padding: 0;
     font-style: italic;
+    page-break-before: avoid;
   }
 
+  .references-title {
+    page-break-before: always;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+}
+
+body.footer, body.header {
+  font-size: $font-size-base;
+
+  table {
+    width: 100%;
+
+    td {
+      text-align: center;
+    }
+  }
 }
