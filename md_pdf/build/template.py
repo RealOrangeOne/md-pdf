@@ -22,7 +22,9 @@ def add_base_tag(doc, config):
     logger.debug("Adding Base Tag...")
     soup = BeautifulSoup(doc, 'html.parser')
     for img in soup.findAll('img'):
-        img['src'] = os.path.abspath(img['src'])
+        abs_path = os.path.abspath(img['src'])
+        if os.path.isfile(abs_path):
+            img['src'] = abs_path
     return soup.prettify()
 
 
