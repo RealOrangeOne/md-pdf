@@ -6,12 +6,14 @@ from md_pdf.build.pdf import export_pdf
 from md_pdf.build.template import parse_template
 import os
 import logging
+import time
 
 logger = logging.getLogger(__file__)
 
 
 def build(config):
     logger.debug("Starting Build...")
+    start_time = time.time()
     data = read_files(os.path.abspath(config['input']))
     doc = build_document(data, config.get('bibliography'), config.get('context'))
     parsed_template = parse_template(doc, config)
@@ -21,3 +23,4 @@ def build(config):
         render_cover(config)
         render_css()
         export_pdf(parsed_template, config)
+    logger.info('Output completed in {:.2f} seconds.'.format(time.time() - start_time))
