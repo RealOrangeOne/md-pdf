@@ -47,6 +47,14 @@ body.content {
   }
 }
 
-body.footer {
+body.footer, body.header {
   font-size: $font-size-base;
+
+  table {
+    width: 100%;
+
+    td {
+      text-align: center;
+    }
+  }
 }
