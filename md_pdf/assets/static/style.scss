@@ -62,13 +62,13 @@ body.footer, body.header {
 
 body.tocs {
   h1 {
-    text-align: center;
     margin-bottom: 45px;
+    text-align: center;
   }
 
   .row {
-    border-bottom: 1px dashed black;
     margin-bottom: $font-size-base;
+    border-bottom: 1px dashed black;
     font-size: $font-size-base * 1.5;
   }
 
