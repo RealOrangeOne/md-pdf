@@ -58,3 +58,35 @@ body.footer, body.header {
     }
   }
 }
+
+
+body.tocs {
+  h1 {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+
+  .row {
+    border-bottom: 1px dashed black;
+    margin-bottom: $font-size-base;
+    font-size: $font-size-base * 1.5;
+  }
+
+  .page-number {
+    float: right;
+    padding-right: $font-size-base * 0.5;
+  }
+
+
+  ul {
+    padding-left: 0;
+
+    li {
+      list-style: none;
+    }
+
+    ul {
+      padding-left: $font-size-base;
+    }
+  }
+}

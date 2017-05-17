@@ -11,27 +11,9 @@
   <xsl:template match="outline:outline">
     <html>
       <head>
-        <style>
-          h1 {
-            text-align: center;
-            font-size: 20px;
-            font-family: arial;
-          }
-          div {border-bottom: 1px dashed rgb(200,200,200);}
-          span {float: right;}
-          li {list-style: none;}
-          ul {
-            font-size: 20px;
-            font-family: arial;
-          }
-          ul ul {font-size: 80%; }
-          ul {padding-left: 0em;}
-          ul ul {padding-left: 1em;}
-          a {text-decoration:none; color: black;}
-        </style>
         <link rel="stylesheet" href="{{ static_dir }}/style.css" />
       </head>
-      <body>
+      <body class="tocs">
         <h1>Table of Contents</h1>
         <ul>
           <xsl:apply-templates select="outline:item/outline:item"/>
@@ -42,8 +24,8 @@
   <xsl:template match="outline:item">
     <li>
       <xsl:if test="@page!='2'">
-        <div>
-          <a>
+        <div class="row">
+          <a class="title">
             <xsl:if test="@link">
               <xsl:attribute name="href">
                 <xsl:value-of select="@link"/>
@@ -56,7 +38,7 @@
             </xsl:if>
             <xsl:value-of select="@title" /> 
           </a>
-          <span>
+          <span class="page-number">
             <xsl:value-of select="@page" />
           </span>
         </div>

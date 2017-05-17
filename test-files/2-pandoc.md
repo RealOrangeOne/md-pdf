@@ -21,3 +21,6 @@
 -   Citation with suffix only [@item1 and nowhere else].
 
 -   With some markup [*see* @item1 p. **32**].
+
+
+##### More referencing tests
