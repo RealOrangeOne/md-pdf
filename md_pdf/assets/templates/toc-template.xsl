@@ -29,7 +29,7 @@
           ul ul {padding-left: 1em;}
           a {text-decoration:none; color: black;}
         </style>
-        <link rel="stylesheet" href="/home/jake/Projects/md-pdf/md_pdf/assets/static/style.css" />
+        <link rel="stylesheet" href="{{ static_dir }}/style.css" />
       </head>
       <body>
         <h1>Table of Contents</h1>
