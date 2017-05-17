@@ -69,12 +69,20 @@ def validate_context(config):
         raise ConfigValidationException("Context keys must be plain. Invalid values: {}".format(", ".join(invalid_values)))
 
 
+def validate_toc(config):
+    if 'toc' not in config:
+        return
+    if type(config['toc']) != bool:
+        raise ConfigValidationException("Table of contents key should be either true or false")
+
+
 def validate_config(config):
     for validator in [
         check_required_keys,
         test_input,
         test_output,
         validate_bibliography,
-        validate_context
+        validate_context,
+        validate_toc
     ]:
         validator(config)
