@@ -77,6 +77,7 @@ def validate_toc(config):
 
 
 def validate_config(config):
+    logger.debug("Validating Config...")
     for validator in [
         check_required_keys,
         test_input,
@@ -86,3 +87,4 @@ def validate_config(config):
         validate_toc
     ]:
         validator(config)
+    logger.debug("Config Ok!")
