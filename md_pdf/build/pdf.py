@@ -49,5 +49,7 @@ def export_pdf(content, config):
         content,
         os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
         options=PDF_OPTIONS,
-        cover=OUTPUT_COVER_FILE
+        cover=OUTPUT_COVER_FILE,
+        toc=TOC_OPTIONS,
+        cover_first=True
     )
