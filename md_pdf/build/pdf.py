@@ -14,6 +14,12 @@ DEFAULT_MARGIN_HORIZONTAL = '2.5cm'
 STYLE_FILE = os.path.join(STATIC_DIR, 'style.css')
 HEADER_FILE = os.path.join(TEMPLATES_DIR, 'header.html')
 FOOTER_FILE = os.path.join(TEMPLATES_DIR, 'footer.html')
+TOC_TEMPLATE_FILE = os.path.join(TEMPLATES_DIR, 'toc.xsl')
+
+TOC_OPTIONS = {
+    'xsl-style-sheet': TOC_TEMPLATE_FILE
+}
+
 PDF_OPTIONS = {
     "no-pdf-compression": "",
     "enable-internal-links": "",
