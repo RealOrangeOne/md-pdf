@@ -1,9 +1,9 @@
 from md_pdf.build.md import read_files
 from md_pdf.build.pandoc import build_document, output_html
-from md_pdf.build.cover import render_cover
+from md_pdf.build.templates import render_cover
 from md_pdf.build.css import render_css
 from md_pdf.build.pdf import export_pdf
-from md_pdf.build.template import parse_template
+from md_pdf.build.content import parse_template
 import os
 import logging
 import time

@@ -1,6 +1,6 @@
 import pdfkit
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
-from md_pdf.build.cover import OUTPUT_COVER_FILE
+from md_pdf.build.templates import OUTPUT_COVER_FILE
 import os
 import logging
 
