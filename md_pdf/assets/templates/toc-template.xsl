@@ -19,7 +19,7 @@
   </xsl:template>
   <xsl:template match="outline:item">
     <li>
-      <xsl:if test="@page!='2'">
+      <xsl:if test="@page!='2' and @title!='References'">
         <div class="row">
           <a class="title">
             <xsl:if test="@link">
