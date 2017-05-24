@@ -1,6 +1,6 @@
 import pdfkit
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
-from md_pdf.build.cover import OUTPUT_COVER_FILE
+from md_pdf.build.templates import FILE_NAME_FORMAT
 import os
 import logging
 
@@ -14,6 +14,11 @@ DEFAULT_MARGIN_HORIZONTAL = '2.5cm'
 STYLE_FILE = os.path.join(STATIC_DIR, 'style.css')
 HEADER_FILE = os.path.join(TEMPLATES_DIR, 'header.html')
 FOOTER_FILE = os.path.join(TEMPLATES_DIR, 'footer.html')
+
+TOC_OPTIONS = {
+    'xsl-style-sheet': os.path.join(TEMPLATES_DIR, 'toc.xsl')
+}
+
 PDF_OPTIONS = {
     "no-pdf-compression": "",
     "enable-internal-links": "",
@@ -43,5 +48,7 @@ def export_pdf(content, config):
         content,
         os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
         options=PDF_OPTIONS,
-        cover=OUTPUT_COVER_FILE
+        cover=FILE_NAME_FORMAT.format('cover'),
+        toc=TOC_OPTIONS if config['toc'] else {},
+        cover_first=True
     )
