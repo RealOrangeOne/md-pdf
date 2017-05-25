@@ -12,10 +12,17 @@ EXTRA_CONTEXT = {
 
 
 def get_context(config, content):
+    config = config.copy()
     context = config['context'].copy()
-    context['title'] = config['title']
-    context = dict(context, **EXTRA_CONTEXT, **{
-    })
+    del config['context']
+    context = dict(
+        config,
+        **context,
+        **EXTRA_CONTEXT,
+        **{
+
+        }
+    )
     if config.get('show_word_count'):
         context['word_count'] = word_count(get_plain_text(content))
     return context
