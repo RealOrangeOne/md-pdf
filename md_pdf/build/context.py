@@ -1,11 +1,13 @@
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
 from word_count import word_count
 from md_pdf.utils import get_plain_text
+from datetime import datetime
 
 
 EXTRA_CONTEXT = {
     'templates_dir': TEMPLATES_DIR,
-    'static_dir': STATIC_DIR
+    'static_dir': STATIC_DIR,
+    'date': datetime.now()
 }
 
 
