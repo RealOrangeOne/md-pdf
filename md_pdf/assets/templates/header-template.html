@@ -8,7 +8,11 @@
       <tr>
         <td></td>
         <td></td>
-        <td></td>
+        <td>
+          {% if submission_date %}
+            Date: {{ submission_date }}
+          {% endif %}
+        </td>
       </tr>
     </table>
     <script type="text/javascript" src="../static/context.js"></script>

@@ -12,6 +12,7 @@ setup(
         "progressbar2==3.16.0",
         "pypandoc==1.3.3",
         "pyscss==1.3.5",
+        "python-dateutil==2.6.0",
         "PyYAML==3.12",
         "word-count==0.1.0"
     ],
