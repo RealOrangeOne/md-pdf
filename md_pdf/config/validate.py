@@ -76,6 +76,13 @@ def validate_toc(config):
         raise ConfigValidationException("Table of contents key should be either true or false")
 
 
+def validate_wordcount(config):
+    if 'show_word_count' not in config:
+        return
+    if type(config['show_word_count']) != bool:
+        raise ConfigValidationException("Show word count key should be either true or false")
+
+
 def validate_config(config):
     logger.debug("Validating Config...")
     for validator in [
@@ -84,7 +91,8 @@ def validate_config(config):
         test_output,
         validate_bibliography,
         validate_context,
-        validate_toc
+        validate_toc,
+        validate_wordcount
     ]:
         validator(config)
     logger.debug("Config Ok!")

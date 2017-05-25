@@ -13,3 +13,4 @@ context:
   turnitin_number: 789123
 title: test title
 toc: true
+show_word_count: true

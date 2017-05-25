@@ -11,7 +11,9 @@
           Page <span class="page"></span> of <span class="topage"></span>
         </td>
         <td>
-          Total Words: {{ word_count }}
+          {% if word_count %}
+            Total Words: {{ word_count }}
+          {% endif %}
         </td>
       </tr>
     </table>
