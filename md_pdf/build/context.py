@@ -11,6 +11,7 @@ EXTRA_CONTEXT = {
 def get_context(config, content):
     context = config['context'].copy()
     context['title'] = config['title']
-    context = dict(context, **EXTRA_CONTEXT)
-    context['word_count'] = word_count(content)
+    context = dict(context, **EXTRA_CONTEXT, **{
+        'word_count': word_count(content)
+    })
     return context
