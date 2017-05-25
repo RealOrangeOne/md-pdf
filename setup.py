@@ -12,7 +12,8 @@ setup(
         "progressbar2==3.16.0",
         "pypandoc==1.3.3",
         "pyscss==1.3.5",
-        "PyYAML==3.12"
+        "PyYAML==3.12",
+        "word-count==0.1.0"
     ],
     setup_requires=['setuptools_scm'],
     packages=find_packages(),
