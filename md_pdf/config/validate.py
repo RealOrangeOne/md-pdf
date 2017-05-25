@@ -95,7 +95,6 @@ def validate_submission_date(config):
         raise ConfigValidationException("Invalid Submission Date format")
 
 
-
 def validate_config(config):
     logger.debug("Validating Config...")
     for validator in [
