@@ -23,8 +23,8 @@ def get_context(config, content):
     del config['context']
     context = dict(
         config,
-        **context,
         **EXTRA_CONTEXT,
+        **context,
         **{
             'output_dir': os.path.abspath(config['output_dir']),
         }
