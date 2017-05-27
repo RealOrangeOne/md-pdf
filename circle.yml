@@ -23,6 +23,6 @@ test:
     - flake8 md_pdf/ --ignore=E128,E501
     - safety check
     - bandit -r md_pdf/
-    - mdp --update-csl
+    - mdp --update-csl -vvv
     - cd test-files/ && mdp -vvv
     - scripts/run-tests.sh
