@@ -3,7 +3,8 @@ from md_pdf.consts import CSL_DIR
 import glob
 import os
 import logging
-
+from dateutil import parser
+import datetime
 
 logger = logging.getLogger(__file__)
 
@@ -76,6 +77,24 @@ def validate_toc(config):
         raise ConfigValidationException("Table of contents key should be either true or false")
 
 
+def validate_wordcount(config):
+    if 'show_word_count' not in config:
+        return
+    if type(config['show_word_count']) != bool:
+        raise ConfigValidationException("Show word count key should be either true or false")
+
+
+def validate_submission_date(config):
+    if 'submission_date' not in config:
+        return
+    if type(config['submission_date']) in [datetime.date, datetime.datetime, datetime.time]:
+        return
+    try:
+        parser.parse(config['submission_date'])
+    except ValueError:
+        raise ConfigValidationException("Invalid Submission Date format")
+
+
 def validate_config(config):
     logger.debug("Validating Config...")
     for validator in [
@@ -84,7 +103,9 @@ def validate_config(config):
         test_output,
         validate_bibliography,
         validate_context,
-        validate_toc
+        validate_toc,
+        validate_wordcount,
+        validate_submission_date
     ]:
         validator(config)
     logger.debug("Config Ok!")

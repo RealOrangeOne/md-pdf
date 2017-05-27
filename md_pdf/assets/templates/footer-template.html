@@ -6,8 +6,14 @@
   <body class="footer">
     <table>
       <tr>
+        <td></td>
         <td>
           Page <span class="page"></span> of <span class="topage"></span>
+        </td>
+        <td>
+          {% if word_count %}
+            Total Words: {{ word_count }}
+          {% endif %}
         </td>
       </tr>
     </table>

@@ -4,6 +4,17 @@
     <link rel="stylesheet" href="../static/style.css" />
   </head>
   <body class="header">
+    <table>
+      <tr>
+        <td>{{ title }}</td>
+        <td></td>
+        <td>
+          {% if submission_date %}
+            Date: {{ submission_date }}
+          {% endif %}
+        </td>
+      </tr>
+    </table>
     <script type="text/javascript" src="../static/context.js"></script>
   </body>
 </html>

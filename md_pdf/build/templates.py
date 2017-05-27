@@ -1,14 +1,11 @@
 from jinja2 import Template
-from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
+from md_pdf.consts import TEMPLATES_DIR
+from md_pdf.build.context import get_context
 import os
 import logging
 
 logger = logging.getLogger(__file__)
 
-EXTRA_CONFIG = {
-    'templates_dir': TEMPLATES_DIR,
-    'static_dir': STATIC_DIR
-}
 
 FILE_NAME_FORMAT = os.path.join(TEMPLATES_DIR, "{}.html")
 TEMPLATE_FORMAT = os.path.join(TEMPLATES_DIR, "{}-template.html")
@@ -24,10 +21,8 @@ def render_page(input_file, output_file, context):
         return cover
 
 
-def render_templates(config):
-    context = config['context'].copy()
-    context['title'] = config['title']
-    context = dict(context, **EXTRA_CONFIG)
+def render_templates(config, content):
+    context = get_context(config, content)
     for template in [
         'cover',
         'header',

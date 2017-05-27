@@ -20,7 +20,7 @@ def build(config):
     if 'html' in config['output_formats']:
         output_html(parsed_template, os.path.abspath(config['output_dir']))
     if 'pdf' in config['output_formats']:
-        render_templates(config)
+        render_templates(config, parsed_template)
         render_css()
         export_pdf(parsed_template, config)
     logger.info('Output completed in {:.2f} seconds.'.format(time.time() - start_time))
