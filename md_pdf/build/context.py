@@ -1,6 +1,7 @@
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR, DATE_FORMAT, TIME_FORMAT, DATETIME_FORMAT
 from word_count import word_count
 from md_pdf.utils import get_plain_text
+from md_pdf import __version__
 from dateutil import parser
 import datetime
 import os
@@ -11,7 +12,8 @@ EXTRA_CONTEXT = {
     'static_dir': STATIC_DIR,
     'date': datetime.datetime.now().strftime(DATE_FORMAT),
     'time': datetime.datetime.now().strftime(TIME_FORMAT),
-    'datetime': datetime.datetime.now().strftime(DATETIME_FORMAT)
+    'datetime': datetime.datetime.now().strftime(DATETIME_FORMAT),
+    'mdp_version': __version__
 }
 
 

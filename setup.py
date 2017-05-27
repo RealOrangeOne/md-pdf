@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
-
+from md_pdf import __version__
 
 setup(
     name="md-pdf",
-    version="1.0",
+    version=__version__,
     use_scm_version=True,
     install_requires=[
         "beautifulsoup4==4.5.3",
