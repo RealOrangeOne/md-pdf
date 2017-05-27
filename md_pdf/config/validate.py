@@ -54,7 +54,7 @@ def validate_bibliography(config):
     if not os.path.isfile(abs_bibliography):
         raise ConfigValidationException("Invalid bibliography path: '{}'".format(abs_bibliography))
     if not os.path.isfile(os.path.join(CSL_DIR, "{}.csl".format(config['bibliography']['csl']))):
-        raise ConfigValidationException("Could not find CSL '{}'".format(config['bibliography']['csl']))
+        raise ConfigValidationException("Could not find CSL '{}' in {}".format(config['bibliography']['csl'], CSL_DIR))
 
 
 def validate_context(config):
