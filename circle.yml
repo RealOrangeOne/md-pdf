@@ -24,4 +24,4 @@ test:
     - bandit -r md_pdf/
     - mdp --update-csl
     - cd test-files/ && mdp -vvv
-    - nose2
+    - scripts/run-tests.sh
