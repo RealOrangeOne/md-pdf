@@ -1,9 +1,9 @@
-from unittest import TestCase
+import unittest
 import os
 from md_pdf.consts import TEMPLATES_DIR
 
 
-class BaseTestCase(TestCase):
+class BaseTestCase(unittest.TestCase):
     def deleteTemplates(self):
         for template in [
             'header.html',
