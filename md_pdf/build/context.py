@@ -3,6 +3,7 @@ from word_count import word_count
 from md_pdf.utils import get_plain_text
 from dateutil import parser
 import datetime
+import os
 
 
 EXTRA_CONTEXT = {
@@ -23,7 +24,7 @@ def get_context(config, content):
         **context,
         **EXTRA_CONTEXT,
         **{
-
+            'output_dir': os.path.abspath(config['output_dir']),
         }
     )
     if config.get('show_word_count'):
