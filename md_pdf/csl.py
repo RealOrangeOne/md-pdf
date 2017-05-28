@@ -1,4 +1,4 @@
-from md_pdf.consts import CSL_DOWNLOAD_LINK, ASSET_DIR, CSL_DIR
+from md_pdf.consts import CSL_DOWNLOAD_LINK, ASSETS_DIR, CSL_DIR
 from md_pdf.exceptions import PrematureExit
 import os
 import urllib
@@ -12,7 +12,7 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-CSL_TEMP_DIR = os.path.join(ASSET_DIR, 'styles-master')
+CSL_TEMP_DIR = os.path.join(ASSETS_DIR, 'styles-master')
 
 
 def check_csl():

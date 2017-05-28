@@ -1,4 +1,4 @@
-from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR, DATE_FORMAT, TIME_FORMAT, DATETIME_FORMAT
+from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR, DATE_FORMAT, TIME_FORMAT, DATETIME_FORMAT, INTERNAL_TEMPLATES_DIR, INTERNAL_STATIC_DIR
 from word_count import word_count
 from md_pdf.utils import get_plain_text
 from md_pdf import __version__
@@ -10,6 +10,8 @@ import os
 EXTRA_CONTEXT = {
     'templates_dir': TEMPLATES_DIR,
     'static_dir': STATIC_DIR,
+    'internal_templates_dir': INTERNAL_TEMPLATES_DIR,
+    'internal_static_dir': INTERNAL_STATIC_DIR,
     'date': datetime.datetime.now().strftime(DATE_FORMAT),
     'time': datetime.datetime.now().strftime(TIME_FORMAT),
     'datetime': datetime.datetime.now().strftime(DATETIME_FORMAT),
