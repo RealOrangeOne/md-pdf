@@ -44,14 +44,14 @@ class AddBodyClassTestCase(BaseTestCase):
 class RenderTemplateTestCase(BaseTestCase):
     def test_renders_template(self):
         html = 'test {{ test }}'
-        output = content.render_template(html, dict(self.BASE_VALID_CONFIG, **{
+        output = content.render_template(html, self.extend_config({
             'test': 'content'
         }))
         self.assertEqual(output, 'test content')
 
     def test_changes_nothing(self):
         html = 'test test'
-        output = content.render_template(html, dict(self.BASE_VALID_CONFIG, **{
+        output = content.render_template(html, self.extend_config({
             'test': 'content'
         }))
         self.assertEqual(output, html)

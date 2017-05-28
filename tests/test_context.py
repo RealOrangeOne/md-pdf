@@ -30,7 +30,7 @@ class ContextTestCase(BaseTestCase):
             self.assertIn(key, context)
 
     def test_context_contains_context(self):
-        config = dict(self.BASE_VALID_CONFIG, **{
+        config = self.extend_config({
             'context': {
                 '1': '2'
             }
@@ -49,7 +49,7 @@ class ContextTestCase(BaseTestCase):
         self.assertEqual(context['output_dir'], os.path.abspath(self.BASE_VALID_CONFIG['output_dir']))
 
     def test_word_count(self):
-        config = dict(self.BASE_VALID_CONFIG, **{
+        config = self.extend_config({
             'show_word_count': True
         })
         context = get_context(config, 'testy test test')
@@ -61,14 +61,14 @@ class ContextTestCase(BaseTestCase):
             datetime.now().time(),
             datetime.now()
         ]:
-            config = dict(self.BASE_VALID_CONFIG, **{
+            config = self.extend_config({
                 'submission_date': value
             })
             context = get_context(config, 'test')
             self.assertEqual(context['submission_date'], value.strftime(consts.DATE_FORMAT))
 
     def test_date_format(self):
-        config = dict(self.BASE_VALID_CONFIG, **{
+        config = self.extend_config({
             'submission_date': '2017-01-01'
         })
         context = get_context(config, 'test')

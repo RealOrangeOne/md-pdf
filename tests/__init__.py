@@ -26,6 +26,12 @@ class BaseTestCase(unittest.TestCase):
         except OSError:
             pass
 
+    def extend_config(self, *args):
+        base_config = self.BASE_VALID_CONFIG.copy()
+        for arg in args:
+            base_config = dict(base_config, **arg)
+        return base_config
+
     def delete_templates(self):
         for template in [
             'header.html',
