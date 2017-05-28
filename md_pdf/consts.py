@@ -1,5 +1,4 @@
 import os
-import shutil
 
 PROJECT_DIR = os.path.dirname(__file__)
 WORKING_DIR = os.getcwd()
