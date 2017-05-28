@@ -48,5 +48,4 @@ class BuildDocumentTestCase(BaseTestCase):
             doc
         )
         self.assertIn('Doe, John. 2005.', doc)
-        self.assertIn('<div id="refs" class="references">', doc)
 
