@@ -12,7 +12,7 @@ def output_html(html, out_dir):
         f.write(html)
 
 
-def build_document(files_content, bibliography, context):
+def build_document(files_content, bibliography):
     args = [
         '-s',
     ]
