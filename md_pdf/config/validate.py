@@ -41,7 +41,6 @@ def test_input(config):
             raise ConfigValidationException("Input must be a glob of files")
 
 
-
 def validate_bibliography(config):
     if 'bibliography' not in config:
         return
