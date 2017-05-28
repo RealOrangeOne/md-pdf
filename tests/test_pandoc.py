@@ -31,6 +31,10 @@ class BuildDocumentTestCase(BaseTestCase):
         doc = build_document('# test', None)
         self.assertIn('<h1 id="test">test</h1>', doc)
 
+    def converts_nothing_if_plain(self):
+        doc = build_document('test', None)
+        self.assertIn('test', doc)
+
     def test_bibliography(self):
         bibliography = {
             'references': 'test-files/bib.yaml',
