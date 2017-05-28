@@ -21,8 +21,11 @@ EXTRA_CONTEXT = {
 
 def get_context(config, content):
     config = config.copy()
-    context = config['context'].copy()
-    del config['context']
+    if 'context' in config:
+        context = config['context'].copy()
+        del config['context']
+    else:
+        context = {}
     context = dict(
         config,
         **EXTRA_CONTEXT,

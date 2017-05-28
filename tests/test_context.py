@@ -3,6 +3,7 @@ from md_pdf.build.context import get_context, EXTRA_CONTEXT
 from md_pdf import consts
 from datetime import datetime
 from md_pdf import __version__
+import os
 
 
 class ExtraContextTestCase(BaseTestCase):
@@ -20,3 +21,57 @@ class ExtraContextTestCase(BaseTestCase):
 
     def test_version(self):
         self.assertEqual(EXTRA_CONTEXT['mdp_version'], __version__)
+
+
+class ContextTestCase(BaseTestCase):
+    def test_context_contains_extra(self):
+        context = get_context(self.BASE_VALID_CONFIG, 'test')
+        for key in EXTRA_CONTEXT.keys():
+            self.assertIn(key, context)
+
+    def test_context_contains_context(self):
+        config = dict(self.BASE_VALID_CONFIG, **{
+            'context': {
+                '1': '2'
+            }
+        })
+        context = get_context(config, 'test')
+        self.assertEqual(context['1'], '2')
+        self.assertNotIn('context', context)
+
+    def test_context_contains_config(self):
+        context = get_context(self.BASE_VALID_CONFIG, 'test')
+        for key in self.BASE_VALID_CONFIG.keys():
+            self.assertIn(key, context)
+
+    def test_has_output_dir(self):
+        context = get_context(self.BASE_VALID_CONFIG, 'test')
+        self.assertEqual(context['output_dir'], os.path.abspath(self.BASE_VALID_CONFIG['output_dir']))
+
+    def test_word_count(self):
+        config = dict(self.BASE_VALID_CONFIG, **{
+            'show_word_count': True
+        })
+        context = get_context(config, 'testy test test')
+        self.assertEqual(context['word_count'], 3)
+
+    def test_transparent_datetime_for_submission_date(self):
+        for value in [
+            datetime.now().date(),
+            datetime.now().time(),
+            datetime.now()
+        ]:
+            config = dict(self.BASE_VALID_CONFIG, **{
+                'submission_date': value
+            })
+            context = get_context(config, 'test')
+            self.assertEqual(context['submission_date'], value.strftime(consts.DATE_FORMAT))
+
+    def test_date_format(self):
+        config = dict(self.BASE_VALID_CONFIG, **{
+            'submission_date': '2017-01-01'
+        })
+        context = get_context(config, 'test')
+        self.assertEqual(context['submission_date'], '01 January 2017')
+
+

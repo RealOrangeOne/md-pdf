@@ -20,15 +20,7 @@ class ReadConfigTestCase(BaseTestCase):
 
 class ConfigValidatorBaseTestCase(BaseTestCase):
     def setUp(self):
-        self.BASE_VALID_CONFIG = {
-            'title': 'test title',
-            'input': 'test-files/*.md',
-            'output_formats': [
-                'html', 'pdf'
-            ],
-            'output_dir': 'out/',
-
-        }
+        super().setUp()
         validate.validate_config(self.BASE_VALID_CONFIG)
 
 

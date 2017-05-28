@@ -4,6 +4,18 @@ from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
 
 
 class BaseTestCase(unittest.TestCase):
+    def setUp(self):
+        super().setUp()
+        self.BASE_VALID_CONFIG = {
+            'title': 'test title',
+            'input': 'test-files/*.md',
+            'output_formats': [
+                'html', 'pdf'
+            ],
+            'output_dir': 'out/',
+
+        }
+
     def removeFile(self, file):
         try:
             os.remove(file)
