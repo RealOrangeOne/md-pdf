@@ -39,7 +39,7 @@ def download_csl():
     with open(download_location, 'rb') as downloaded_file:
         with zipfile.ZipFile(downloaded_file) as csl_zip:
             member_list = csl_zip.namelist()
-            logger.info("Extracting CSL to {}".format(ASSET_DIR))
+            logger.info("Extracting CSL to {}".format(ASSETS_DIR))
             bar.start(max_value=len(member_list))
 
             for i, member in enumerate(member_list):
