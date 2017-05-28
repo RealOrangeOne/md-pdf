@@ -1,10 +1,10 @@
 from scss import Compiler
-from md_pdf.consts import STATIC_DIR
+from md_pdf.consts import INTERNAL_STATIC_DIR
 from md_pdf.build.pdf import STYLE_FILE
 import os
 
 
-STYLE_SRC_FILE = os.path.join(STATIC_DIR, 'style.scss')
+STYLE_SRC_FILE = os.path.join(INTERNAL_STATIC_DIR, 'style.scss')
 
 
 def render_css():
