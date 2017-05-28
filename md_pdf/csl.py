@@ -43,7 +43,7 @@ def download_csl():
             bar.start(max_value=len(member_list))
 
             for i, member in enumerate(member_list):
-                csl_zip.extract(member, path=ASSET_DIR)
+                csl_zip.extract(member, path=ASSETS_DIR)
                 bar.update(i)
 
             bar.finish()
