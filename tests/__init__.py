@@ -1,6 +1,7 @@
 import unittest
 import os
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
+from md_pdf.build.templates import FILE_NAME_FORMAT
 from bs4 import BeautifulSoup
 
 
@@ -26,6 +27,17 @@ class BaseTestCase(unittest.TestCase):
         except OSError:
             pass
 
+    def touch_file(self, file):
+        open(file, 'w').close()
+
+    def create_fake_templates(self):
+        for template in [
+            'header',
+            'footer',
+            'cover'
+        ]:
+            self.touch_file(FILE_NAME_FORMAT.format(template))
+
     def extend_config(self, *args):
         base_config = self.BASE_VALID_CONFIG.copy()
         for arg in args:
@@ -44,4 +56,9 @@ class BaseTestCase(unittest.TestCase):
     def tearDown(self):
         self.delete_templates()
         self.remove_file(os.path.join(STATIC_DIR, 'style.css'))
+
+    def call_to_args(self, call):
+        args = tuple(call.call_args)[0]
+        kwargs = tuple(call.call_args)[1]
+        return args, kwargs
 
