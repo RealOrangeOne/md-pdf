@@ -21,6 +21,7 @@ class PDFRendererTestCase(BaseTestCase):
 
     def test_renders(self):
         export_pdf(self.content, self.BASE_VALID_CONFIG)
+        self.assertTrue(os.path.isfile(self.output_file_path))
 
     def test_title(self):
         context = export_pdf(self.content, self.BASE_VALID_CONFIG)
