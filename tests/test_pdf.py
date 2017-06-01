@@ -86,6 +86,3 @@ class PDFRendererTestCase(BaseTestCase):
         self.assertTrue(os.path.isfile(context['footer-html']))
         self.assertEqual(context['header-html'], FILE_NAME_FORMAT.format('header'))
         self.assertEqual(context['footer-html'], FILE_NAME_FORMAT.format('footer'))
-
-
-

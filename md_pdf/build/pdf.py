@@ -58,4 +58,3 @@ def export_pdf(content, config):
     except OSError as e:
         raise PDFRenderException('Failed to render PDF. ' + str(e))
     return PDF_OPTIONS  # mostly for testing
-
