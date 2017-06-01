@@ -1,6 +1,7 @@
 import pdfkit
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
 from md_pdf.build.templates import FILE_NAME_FORMAT
+from md_pdf.exceptions import PDFRenderException
 import os
 import logging
 
@@ -44,7 +45,7 @@ def export_pdf(content, config):
     PDF_OPTIONS['margin-right'] = config['context'].get('margin_horizontal', DEFAULT_MARGIN_HORIZONTAL)
 
     logger.info("Rendering PDF...")
-    return pdfkit.from_string(
+    render_ok = pdfkit.from_string(
         content,
         os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
         options=PDF_OPTIONS,
@@ -52,3 +53,7 @@ def export_pdf(content, config):
         toc=TOC_OPTIONS if config['toc'] else {},
         cover_first=True
     )
+    if not render_ok:
+        raise PDFRenderException('Failed to render PDF. ' + render_ok)
+    return PDF_OPTIONS  # mostly for testing
+
