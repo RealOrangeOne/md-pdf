@@ -2,7 +2,7 @@ from tests import BaseTestCase
 from md_pdf import consts
 from unittest import skipIf
 import os
-import requests
+from urllib.parse import urlparse
 import datetime
 from freezegun import freeze_time
 
@@ -60,17 +60,10 @@ class ConstsTestCase(BaseTestCase):
         self.assertIn('mdp.yml', consts.CONFIG_FILE)
 
     def test_csl_download_link(self):
-        self.assertIn('https://github.com', consts.CSL_DOWNLOAD_LINK)
-        self.assertTrue(consts.CSL_DOWNLOAD_LINK.endswith('master.zip'))
-
-    def test_csl_accessible(self):
-        response = requests.head(consts.CSL_DOWNLOAD_LINK)
-        if response.status_code == 302:
-            response = requests.head(response.headers['Location'])
-        self.assertEqual(response.status_code, 200)
-        headers = response.headers
-        self.assertEqual(headers['Content-Type'], 'application/zip')
-        self.assertEqual(headers['Content-Disposition'], 'attachment; filename=styles-master.zip')
+        url = urlparse(consts.CSL_DOWNLOAD_LINK)
+        self.assertEqual(url.netloc, 'github.com')
+        self.assertTrue(url.path.endswith('master.zip'))
+        self.assertIn('citation-style-language/styles', url.path)
 
     @freeze_time('2017-01-01')
     def test_date_format(self):
@@ -96,7 +89,7 @@ class ConstsTestCase(BaseTestCase):
             '01 January 2017 12:34'
         )
 
-    def test_dirs_existt(self):
+    def test_dirs_exist(self):
         self.assertTrue(os.path.isdir(consts.ASSETS_DIR))
         self.assertTrue(os.path.isdir(consts.TEMPLATES_DIR))
         self.assertTrue(os.path.isdir(consts.STATIC_DIR))

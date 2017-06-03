@@ -1,5 +1,4 @@
 bandit==1.4.0
 flake8==3.3.0
 freezegun==0.3.9
-requests==2.16.5
 safety==0.5.1
