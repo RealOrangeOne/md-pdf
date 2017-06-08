@@ -3,6 +3,7 @@ from jinja2 import Environment
 
 def render_content(content, context):
     env = Environment(
+        autoescape=True,
         trim_blocks=True,
         lstrip_blocks=True,
         extensions=[
