@@ -1,7 +1,23 @@
 from tests import BaseTestCase
 from md_pdf.build.pandoc import output_html, build_document
+from md_pdf.build.md import read_files
 from md_pdf.utils import remove_dir
 import os
+import glob
+
+
+class ReadFileTestCase(BaseTestCase):
+    file_glob = 'test-files/*.md'
+
+    def test_reads_files(self):
+        files = read_files(self.file_glob)
+        self.assertNotEqual(files, '')
+
+    def test_contains_all_files(self):
+        files = read_files(self.file_glob)
+        for file in glob.iglob(self.file_glob):
+            with open(file) as f:
+                self.assertIn(f.read(), files)
 
 
 class OutputHTMLTestCase(BaseTestCase):
