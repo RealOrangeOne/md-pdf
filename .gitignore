@@ -245,3 +245,4 @@ ENV/
 # End of https://www.gitignore.io/api/node,linux,python,jetbrains,archlinuxpackages
 
 out/
+.mypy_cache
