@@ -1,6 +1,6 @@
-from jinja2 import Template
 from md_pdf.consts import TEMPLATES_DIR, INTERNAL_TEMPLATES_DIR
 from md_pdf.build.context import get_context
+from md_pdf.build.jinja import render_content
 import os
 import logging
 
@@ -14,11 +14,10 @@ TEMPLATE_FORMAT = os.path.join(INTERNAL_TEMPLATES_DIR, "{}-template.html")
 def render_page(input_file, output_file, context):
     logger.debug("Rendering {}...".format(os.path.splitext(os.path.basename(output_file))[0].title()))
     with open(input_file) as f:
-        template = Template(f.read())
+        content = render_content(f.read(), context)
     with open(output_file, "w") as f:
-        cover = template.render(context)
-        f.write(cover)
-        return cover
+        f.write(content)
+        return content
 
 
 def render_templates(config, content):
