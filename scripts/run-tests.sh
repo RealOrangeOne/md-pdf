@@ -2,4 +2,7 @@
 
 set -e
 
-python3 -m unittest -v $@
+coverage run --source=md_pdf -m unittest -v $@
+
+coverage report
+coverage html
