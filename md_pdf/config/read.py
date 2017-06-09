@@ -1,5 +1,4 @@
 import yaml
-import os
 from md_pdf.consts import CONFIG_FILE
 from md_pdf.exceptions import ConfigValidationException
 
