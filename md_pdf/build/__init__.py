@@ -11,7 +11,7 @@ import time
 logger = logging.getLogger(__file__)
 
 
-def build(config):
+def build(config: dict):
     logger.debug("Starting Build...")
     start_time = time.time()
     data = read_files(os.path.abspath(config['input']))

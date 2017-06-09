@@ -33,7 +33,7 @@ PDF_OPTIONS = {
 }
 
 
-def export_pdf(content, config):
+def export_pdf(content: str, config: dict) -> dict:
     if logger.getEffectiveLevel() > logging.DEBUG:
         PDF_OPTIONS['quiet'] = ""
     PDF_OPTIONS['title'] = config.get('title', 'Output')

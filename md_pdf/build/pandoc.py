@@ -6,13 +6,13 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-def output_html(html, out_dir):
+def output_html(html: str, out_dir: str):
     logger.info("Outputting HTML...")
     with open(os.path.join(out_dir, 'output.html'), 'w') as f:
         f.write(html)
 
 
-def build_document(files_content, bibliography):
+def build_document(files_content: str, bibliography: dict) -> str:
     args = [
         '-s',
     ]
