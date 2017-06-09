@@ -1,8 +1,8 @@
-from jinja2 import Template
 from bs4 import BeautifulSoup
 import os
 import logging
 from md_pdf.build.context import get_context
+from md_pdf.build.jinja import render_content
 
 logger = logging.getLogger(__file__)
 
@@ -40,9 +40,8 @@ def add_body_class(doc, config):
 
 def render_template(html, config):
     logger.debug("Rendering Template...")
-    template = Template(html)
     context = get_context(config, html)
-    return template.render(context)
+    return render_content(html, context)
 
 
 def parse_template(doc, config):
