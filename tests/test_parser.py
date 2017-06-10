@@ -48,10 +48,3 @@ class RenderTemplateTestCase(BaseTestCase):
             'test': 'content'
         }))
         self.assertEqual(output, 'test content')
-
-    def test_changes_nothing(self):
-        html = 'test test'
-        output = content.render_template(html, self.extend_config({
-            'test': 'content'
-        }))
-        self.assertEqual(output, html)
