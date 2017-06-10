@@ -10,7 +10,6 @@ def render_content(content, context):
             'jinja2.ext.with_',
             'jinja2.ext.loopcontrols'
         ]
-
     )
     template = env.from_string(content)
     return template.render(**context)

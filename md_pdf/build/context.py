@@ -19,11 +19,14 @@ EXTRA_CONTEXT = {
 }
 
 
-def get_context(config, content):
+def get_context(config: dict, content: str) -> dict:
     config = config.copy()
-    context = config['context'].copy()
-    del config['context']
-    context = dict(
+    if 'context' in config:
+        context = config['context'].copy()
+        del config['context']
+    else:
+        context = {}
+    merged_context = dict(
         config,
         **EXTRA_CONTEXT,
         **context,
@@ -32,11 +35,11 @@ def get_context(config, content):
         }
     )
     if config.get('show_word_count'):
-        context['word_count'] = word_count(get_plain_text(content))
+        merged_context['word_count'] = word_count(get_plain_text(content))
     if config.get('submission_date'):
         if type(config['submission_date']) in [datetime.date, datetime.datetime, datetime.time]:
             submission_date = config['submission_date']
         else:
             submission_date = parser.parse(config['submission_date'])
-        context['submission_date'] = submission_date.strftime(DATE_FORMAT)
-    return context
+        merged_context['submission_date'] = submission_date.strftime(DATE_FORMAT)
+    return merged_context

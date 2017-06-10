@@ -18,9 +18,12 @@ dependencies:
 
 
 test:
-  post:
+  override:
+    - npm test
     - flake8 md_pdf/ --ignore=E128,E501
+    - mypy --ignore-missing-imports md_pdf
     - safety check
     - bandit -r md_pdf/
-    - mdp --update-csl
+    - mdp --update-csl -vvv
     - cd test-files/ && mdp -vvv
+    - scripts/run-tests.sh

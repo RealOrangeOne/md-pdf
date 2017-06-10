@@ -11,11 +11,11 @@ import time
 logger = logging.getLogger(__file__)
 
 
-def build(config):
+def build(config: dict):
     logger.debug("Starting Build...")
     start_time = time.time()
     data = read_files(os.path.abspath(config['input']))
-    doc = build_document(data, config.get('bibliography'), config.get('context'))
+    doc = build_document(data, config.get('bibliography'))
     parsed_template = parse_template(doc, config)
     if 'html' in config['output_formats']:
         output_html(parsed_template, os.path.abspath(config['output_dir']))

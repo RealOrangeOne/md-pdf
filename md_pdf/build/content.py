@@ -19,7 +19,7 @@ def fix_references_title(content, config):
     return soup.prettify()
 
 
-def add_base_tag(doc, config):
+def make_images_relative(doc, config):
     logger.debug("Adding Base Tag...")
     soup = BeautifulSoup(doc, 'html.parser')
     for img in soup.findAll('img'):
@@ -32,6 +32,8 @@ def add_base_tag(doc, config):
 def add_body_class(doc, config):
     logger.debug("Adding Body Class...")
     soup = BeautifulSoup(doc, 'html.parser')
+    if not soup.body:
+        return doc
     soup.body['class'] = 'content'
     return soup.prettify()
 
@@ -46,7 +48,7 @@ def parse_template(doc, config):
     parsed_doc = doc
     for parser in [
         fix_references_title,
-        add_base_tag,
+        make_images_relative,
         add_body_class,
     ]:
         parsed_doc = parser(parsed_doc, config)

@@ -8,3 +8,7 @@ class PrematureExit(BaseException):
 
 class ConfigValidationException(BaseException):
     pass
+
+
+class PDFRenderException(BaseException):
+    pass

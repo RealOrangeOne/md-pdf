@@ -17,7 +17,7 @@ setup(
         "word-count==0.1.0"
     ],
     setup_requires=['setuptools_scm'],
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
     entry_points="""

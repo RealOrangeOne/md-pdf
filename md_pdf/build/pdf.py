@@ -1,6 +1,7 @@
 import pdfkit
 from md_pdf.consts import TEMPLATES_DIR, STATIC_DIR
 from md_pdf.build.templates import FILE_NAME_FORMAT
+from md_pdf.exceptions import PDFRenderException
 import os
 import logging
 
@@ -12,8 +13,8 @@ DEFAULT_MARGIN_VERTICAL = '1.5cm'
 DEFAULT_MARGIN_HORIZONTAL = '2.5cm'
 
 STYLE_FILE = os.path.join(STATIC_DIR, 'style.css')
-HEADER_FILE = os.path.join(TEMPLATES_DIR, 'header.html')
-FOOTER_FILE = os.path.join(TEMPLATES_DIR, 'footer.html')
+HEADER_FILE = FILE_NAME_FORMAT.format('header')
+FOOTER_FILE = FILE_NAME_FORMAT.format('footer')
 
 TOC_OPTIONS = {
     'xsl-style-sheet': os.path.join(TEMPLATES_DIR, 'toc.xsl')
@@ -32,23 +33,28 @@ PDF_OPTIONS = {
 }
 
 
-def export_pdf(content, config):
+def export_pdf(content: str, config: dict) -> dict:
     if logger.getEffectiveLevel() > logging.DEBUG:
         PDF_OPTIONS['quiet'] = ""
     PDF_OPTIONS['title'] = config.get('title', 'Output')
-    PDF_OPTIONS['replace'] = [(key, str(value)) for key, value in config['context'].items()]
+    context = config.get('context', {})
 
-    PDF_OPTIONS['margin-top'] = config['context'].get('margin_vertical', DEFAULT_MARGIN_VERTICAL)
-    PDF_OPTIONS['margin-bottom'] = config['context'].get('margin_vertical', DEFAULT_MARGIN_VERTICAL)
-    PDF_OPTIONS['margin-left'] = config['context'].get('margin_horizontal', DEFAULT_MARGIN_HORIZONTAL)
-    PDF_OPTIONS['margin-right'] = config['context'].get('margin_horizontal', DEFAULT_MARGIN_HORIZONTAL)
+    PDF_OPTIONS['replace'] = [(key, str(value)) for key, value in context.items()]
+    PDF_OPTIONS['margin-top'] = context.get('margin_vertical', DEFAULT_MARGIN_VERTICAL)
+    PDF_OPTIONS['margin-bottom'] = context.get('margin_vertical', DEFAULT_MARGIN_VERTICAL)
+    PDF_OPTIONS['margin-left'] = context.get('margin_horizontal', DEFAULT_MARGIN_HORIZONTAL)
+    PDF_OPTIONS['margin-right'] = context.get('margin_horizontal', DEFAULT_MARGIN_HORIZONTAL)
 
     logger.info("Rendering PDF...")
-    return pdfkit.from_string(
-        content,
-        os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
-        options=PDF_OPTIONS,
-        cover=FILE_NAME_FORMAT.format('cover'),
-        toc=TOC_OPTIONS if config.get('toc') else {},
-        cover_first=True
-    )
+    try:
+        pdfkit.from_string(
+            content,
+            os.path.join(os.path.abspath(config['output_dir']), 'output.pdf'),
+            options=PDF_OPTIONS,
+            cover=FILE_NAME_FORMAT.format('cover'),
+            toc=TOC_OPTIONS if config.get('toc') else {},
+            cover_first=True
+        )
+    except OSError as e:
+        raise PDFRenderException('Failed to render PDF. ' + str(e))
+    return PDF_OPTIONS  # mostly for testing

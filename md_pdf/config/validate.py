@@ -36,6 +36,9 @@ def test_input(config):
     abs_input = os.path.abspath(config['input'])
     if len(glob.glob(abs_input)) == 0:
         raise ConfigValidationException("No files found at {}".format(abs_input))
+    for file in glob.iglob(abs_input):
+        if not os.path.isfile(file):
+            raise ConfigValidationException("Input must be a glob of files")
 
 
 def validate_bibliography(config):
@@ -49,9 +52,8 @@ def validate_bibliography(config):
     abs_bibliography = os.path.abspath(config['bibliography']['references'])
     if not os.path.isfile(abs_bibliography):
         raise ConfigValidationException("Invalid bibliography path: '{}'".format(abs_bibliography))
-    if 'csl' in config['bibliography']:
-        if not os.path.isfile(os.path.join(CSL_DIR, "{}.csl".format(config['bibliography']['csl']))):
-            raise ConfigValidationException("Could not find CSL '{}'".format(config.bibliography.csl))
+    if not os.path.isfile(os.path.join(CSL_DIR, "{}.csl".format(config['bibliography']['csl']))):
+        raise ConfigValidationException("Could not find CSL '{}' in {}".format(config['bibliography']['csl'], CSL_DIR))
 
 
 def validate_context(config):
@@ -63,11 +65,11 @@ def validate_context(config):
 
     non_str_keys = [key for key in config['context'].keys() if type(key) != str]
     if non_str_keys:
-        raise ConfigValidationException("Context keys must be strings. Non-strings: {}".format(", ".join(non_str_keys)))
+        raise ConfigValidationException("Context keys must be strings. Non-strings: {}".format(non_str_keys))
 
     invalid_values = [value for value in config['context'].values() if type(value) in [list, dict]]
     if invalid_values:
-        raise ConfigValidationException("Context keys must be plain. Invalid values: {}".format(", ".join(invalid_values)))
+        raise ConfigValidationException("Context keys must be plain. Invalid values: {}".format(invalid_values))
 
 
 def validate_toc(config):
@@ -92,7 +94,7 @@ def validate_submission_date(config):
     try:
         parser.parse(config['submission_date'])
     except ValueError:
-        raise ConfigValidationException("Invalid Submission Date format")
+        raise ConfigValidationException("Invalid Submission Date format {}".format(config['submission_date']))
 
 
 def validate_config(config):

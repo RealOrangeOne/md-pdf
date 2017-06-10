@@ -11,7 +11,7 @@ FILE_NAME_FORMAT = os.path.join(TEMPLATES_DIR, "{}.html")
 TEMPLATE_FORMAT = os.path.join(INTERNAL_TEMPLATES_DIR, "{}-template.html")
 
 
-def render_page(input_file, output_file, context):
+def render_page(input_file: str, output_file: str, context: dict) -> str:
     logger.debug("Rendering {}...".format(os.path.splitext(os.path.basename(output_file))[0].title()))
     with open(input_file) as f:
         content = render_content(f.read(), context)
@@ -20,7 +20,7 @@ def render_page(input_file, output_file, context):
         return content
 
 
-def render_templates(config, content):
+def render_templates(config: dict, content: str):
     context = get_context(config, content)
     for template in [
         'cover',
