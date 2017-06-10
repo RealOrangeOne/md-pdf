@@ -1,7 +1,7 @@
 from jinja2 import Environment
 
 
-def render_content(content: str, context: dict) -> str:
+def render_content(content, context):
     env = Environment(
         autoescape=True,
         trim_blocks=True,
