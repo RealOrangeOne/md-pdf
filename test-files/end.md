@@ -5,6 +5,7 @@ Ut imperdiet sit amet sem egestas iaculis. Aliquam sit amet posuere ante, eget i
 
 ```bash
 echo "Hi";
+echo "Also Hi";
 ```
 
 Some `inline` code.
