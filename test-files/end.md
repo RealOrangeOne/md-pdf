@@ -3,9 +3,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus accumsan just
 Ut imperdiet sit amet sem egestas iaculis. Aliquam sit amet posuere ante, eget iaculis turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus maximus lacinia malesuada. Nullam ullamcorper rhoncus massa, a eleifend enim malesuada ullamcorper. Sed sed consequat nibh. Vestibulum fringilla dignissim nulla, nec viverra felis elementum et. Cras tristique posuere luctus. Mauris dapibus pellentesque volutpat. In porttitor placerat felis, non ultrices mi elementum eget. Aenean id lectus egestas, imperdiet dolor ut, varius ante. Mauris vulputate congue lectus, vel tempus nisl volutpat et. Duis dapibus mauris vel aliquet porttitor. Mauris nec risus tempus, pharetra lectus sit amet, molestie ex. Vivamus dapibus mi quis porttitor fermentum. Maecenas imperdiet metus at mi varius pretium. 
 
 
+# Test Code
 ```bash
 echo "Hi";
 echo "Also Hi";
 ```
 
+## Test Inline Code
 Some `inline` code.

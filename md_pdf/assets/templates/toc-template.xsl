@@ -40,7 +40,8 @@
         </div>
       </xsl:if>
       <ul>
-        <xsl:apply-templates select="outline:item"/>
+        <span />
+        <xsl:apply-templates select="outline:item" />
       </ul>
     </li>
   </xsl:template>
