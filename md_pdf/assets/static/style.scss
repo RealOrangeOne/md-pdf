@@ -49,6 +49,16 @@ body.content {
   code {
     white-space: inherit !important;
   }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse !important;
+    border: 1px solid black !important;
+  }
+  
+  table {
+    border: 1px solid black !important;
+  }
 }
 
 body.footer, body.header {
